@@ -34,9 +34,9 @@
     <div class='container'>
       <div class='logo'>
         <img src='logo.png' alt='Logo' align='middle' />
-        <h1 class='brand'>Tiger Air</h1>
-        <p class='tagline'>
-          <strong>We make people fly</strong>
+        <h1 class='brand required' id='companyName'>LionAir</h1>
+        <p class='tagline required' id='motto'>
+          <strong>We Make People Fly</strong>
         </p>
       </div>
       <div class='clear' />
@@ -45,14 +45,14 @@
         <table width='100%'>
           <tr>
             <td>Agent Name</td>
-            <td>PT. Trinusa Travelindo</td>
+            <td class='required' id='agentName'>Traveloka</td>
             <td>Issued Date</td>
-            <td>Tanggal</td>
+            <td class='required' id='issuedDate'>28 Nov 2015</td>
           </tr>
           <tr>
             <td>Booking Reference</td>
             <td>
-              <strong>NLAWB</strong>
+              <strong class='required' id='bookRef'>NLAWB</strong>
             </td>
           </tr>
         </table>
@@ -65,12 +65,16 @@
             <th>eTicket Number</th>
           </tr>
           <tr>
-            <td>pet</td>
-            <td>72109212924124</td>
+            <td class='required' id='passengerName 0'>Kevin</td>
+            <td class='required' id='eTicketNum 0'>97009249741123</td>
           </tr>
           <tr>
-            <td>Mrs. Jeanice Ginting</td>
-            <td>97009249741123</td>
+            <td class='required' id='passengerName 1'>Edmund</td>
+            <td class='required' id='eTicketNum 1'>97009249741124</td>
+          </tr>
+          <tr>
+            <td class='required' id='passengerName 2'>Winson</td>
+            <td class='required' id='eTicketNum 2'>97009249741125</td>
           </tr>
         </table>
       </div>
@@ -88,14 +92,14 @@
             <th>Bagg.</th>
           </tr>
           <tr>
-            <td>21 APR 2016</td>
-            <td />
-            <td />
-            <td />
-            <td />
-            <td />
-            <td />
-            <td />
+            <td class='required' id='iteneraryDate 0'>21 Apr 2016</td>
+            <td class='required' id='iteneraryFlight 0'>GA 135</td>
+            <td class='required' id='iteneraryDepartAirport 0'>JAKARTA (CGK)</td>
+            <td class='required' id='iteneraryArriveAirport 0'>MEDAN (KNO)</td>
+            <td class='required' id='iteneraryDepartTime 0'>13.50</td>
+            <td class='required' id='iteneraryArrivetime 0'>15.50</td>
+            <td class='required' id='iteneraryClass 0'>ECO</td>
+            <td class='required' id='iteneraryBaggage 0'>20KG</td>
           </tr>
         </table>
       </div>
@@ -104,21 +108,21 @@
         <table width='100%'>
           <tr>
             <td class='payment-table-left-column'>Nett Fare</td>
-            <td class='payment-table-right-column'>IDR 2500000</td>
+            <td class='payment-table-right-column required' id='paymentNett'>250000</td>
           </tr>
           <tr>
             <td class='payment-table-left-column'>Taxes</td>
-            <td class='payment-table-right-column'>IDR 250000</td>
+            <td class='payment-table-right-column required' id='paymentTaxes'>25000</td>
           </tr>
           <tr>
             <td class='payment-table-left-column'>Total</td>
-            <td class='payment-table-right-column'>IDR 2750000</td>
+            <td class='payment-table-right-column required' id='total' />
           </tr>
         </table>
       </div>
       <div class='notice'>
         <h3 class='notice-label'>Notice</h3>
-        <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas sed diam eget risus varius blandit sit amet non magna. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec id elit non mi porta gravida at eget metus. Vestibulum id ligula porta felis euismod semper. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
+        <p class='required' id='notice'>ggtq</p>
       </div>
     </div>
   </body>
