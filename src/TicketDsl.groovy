@@ -4,10 +4,11 @@ import groovy.xml.MarkupBuilder
  */
 class TicketDsl {
 
-    String toText
-    String fromText
-    String body
+    String vcompanyName
+    String vmotto
+    String vagentName
     def optAttrs = []
+    def obligeAttrs = []
     Vector<String> sections
 
     private static HashMap<String, Boolean> invocation_effect = new HashMap()
@@ -23,45 +24,19 @@ class TicketDsl {
     }
 
     /**
-     * This method accepts a closure which is essentially the DSL. Delegate the closure methods to
-     * the DSL class so the calls can be processed
-     */
-    def static make(closure) {
-        TicketDsl ticketDsl = new TicketDsl()
-        // any method called in closure will be delegated to the ticketDsl class
-        closure.delegate = TicketDsl
-        closure()
-    }
-
-    /**
-     * Store the parameter as a variable and use it later to output a memo
-     */
-    def to(String toText) {
-        this.toText = toText
-        invocation_effect.replace("to", true)
-        println("Method to being invoked")
-    }
-
-    def from(String fromText) {
-        this.fromText = fromText
-        invocation_effect.replace("from", true)
-//        println("Method from being invoked")
-    }
-
-    def body(String bodyText) {
-        this.body = bodyText
-        invocation_effect.replace("body", true)
-//        println("Method body being invoked")
-    }
-
-    /**
      * When a method is not recognized, assume it is a title for a new section. Create a simple
      * object that contains the method name and the parameter which is the body.
      */
     def methodMissing(String methodName, args) {
-        println("Method Missing being invoked")
-        def optAttr = new optAttr(name: methodName, vals: args)
-        optAttrs << optAttr
+//        println("Method Missing being invoked")
+        def Attr = new Attr(name: methodName, vals: args)
+        if (invocation_effect.containsKey(methodName)){
+            obligeAttrs << Attr
+            invocation_effect.replace(methodName, true)
+        }
+        else{
+            optAttrs << Attr
+        }
     }
 
     /**
@@ -80,14 +55,14 @@ class TicketDsl {
     private static doHtml(TicketDsl ticketDsl) {
         def writer = new StringWriter()
         def xml = new MarkupBuilder(writer)
-//        if (invocation_effect.containsValue(false)){
-//            println("Ada atribut yang belum didefinisikan!!")
-//        }
-//        else{
-        xml.html() {
-            head {
-                title("Ticket")
-                style('''body{
+        if (invocation_effect.containsValue(false)){
+            println("Ada atribut yang belum didefinisikan!!")
+        }
+        else{
+            xml.html() {
+                head {
+                    title("Ticket")
+                    style('''body{
                         background:none;
                     }
 
@@ -115,114 +90,104 @@ class TicketDsl {
                             .booking-details-label, .passenger-details-label, .itinerary-details-label, .payment-details-label, .notice-label{border-bottom: 1px solid;}
                             #passenger-details-table-header, #itinerary-details-table-header{text-align:left;}
                             .payment-table-right-column{text-align: right;}''')
-            }
-            body {
-                div(class: "container"){
-                    div(class: "logo"){
-                        img(src: "logo.png", alt: "Logo", align: "middle")
-                        h1(class: "brand", "Tiger Air")
-                        p(class: "tagline"){
-                            strong("We make people fly")
-                        }
-                    }
-                    div(class: "clear")
-                    div(class: "booking details"){
-                        h3(class: "booking-details-label", "Booking Details")
-                        table(width: "100%"){
-                            tr(){
-                                td("Agent Name")
-                                td("PT. Trinusa Travelindo")
-                                td("Issued Date")
-                                td("Tanggal")
+                }
+                body {
+                    div(class: "container"){
+                        div(class: "logo"){
+                            img(src: "logo.png", alt: "Logo", align: "middle")
+                            h1(class: "brand", "Tiger Air")
+                            p(class: "tagline"){
+                                strong("We make people fly")
                             }
-                            tr(){
-                                td("Booking Reference")
-                                td{
-                                    strong("NLAWB")
+                        }
+                        div(class: "clear")
+                        div(class: "booking details"){
+                            h3(class: "booking-details-label", "Booking Details")
+                            table(width: "100%"){
+                                tr(){
+                                    td("Agent Name")
+                                    td("PT. Trinusa Travelindo")
+                                    td("Issued Date")
+                                    td("Tanggal")
+                                }
+                                tr(){
+                                    td("Booking Reference")
+                                    td{
+                                        strong("NLAWB")
+                                    }
                                 }
                             }
                         }
-                    }
-                    div(class: "passenger-details"){
-                        h3(class: "passenger-details-label", "Passenger Details")
-                        table(width: "100%"){
-                            tr(id: "passenger-details-table-header"){
-                                th("Name")
-                                th("eTicket Number")
-                            }
-                            tr(){
-                                td("pet")
-                                td("72109212924124")
-                            }
-                            tr(){
-                                td("Mrs. Jeanice Ginting")
-                                td("97009249741123")
-                            }
-                        }
-                    }
-                    div(class: "itinerary-details"){
-                        h3(class: "itinerary-details-label", "Itenarary Details")
-                        table(width: "100%"){
-                            tr(id: "itinerary-details-table-header"){
-                                th("Date")
-                                th("Flight")
-                                th("Depart Airport")
-                                th("Arrive Airport")
-                                th("Depart Time")
-                                th("Arrive Time")
-                                th("Class")
-                                th("Bagg.")
-                            }
-                            tr(){
-                                td("21 APR 2016")
-                                td()
-                                td()
-                                td()
-                                td()
-                                td()
-                                td()
-                                td()
+                        div(class: "passenger-details"){
+                            h3(class: "passenger-details-label", "Passenger Details")
+                            table(width: "100%"){
+                                tr(id: "passenger-details-table-header"){
+                                    th("Name")
+                                    th("eTicket Number")
+                                }
+                                tr(){
+                                    td("pet")
+                                    td("72109212924124")
+                                }
+                                tr(){
+                                    td("Mrs. Jeanice Ginting")
+                                    td("97009249741123")
+                                }
                             }
                         }
-                    }
-                    div(class: "payment-details"){
-                        h3(class: "payment-details-label", "Payment Details")
-                        table(width: "100%"){
-                            tr(){
-                                td(class: "payment-table-left-column", "Nett Fare")
-                                td(class: "payment-table-right-column", "IDR 2500000")
-                            }
-                            tr(){
-                                td(class: "payment-table-left-column", "Taxes")
-                                td(class: "payment-table-right-column", "IDR 250000")
-                            }
-                            tr(){
-                                td(class: "payment-table-left-column", "Total")
-                                td(class: "payment-table-right-column", "IDR 2750000")
+                        div(class: "itinerary-details"){
+                            h3(class: "itinerary-details-label", "Itenarary Details")
+                            table(width: "100%"){
+                                tr(id: "itinerary-details-table-header"){
+                                    th("Date")
+                                    th("Flight")
+                                    th("Depart Airport")
+                                    th("Arrive Airport")
+                                    th("Depart Time")
+                                    th("Arrive Time")
+                                    th("Class")
+                                    th("Bagg.")
+                                }
+                                tr(){
+                                    td("21 APR 2016")
+                                    td()
+                                    td()
+                                    td()
+                                    td()
+                                    td()
+                                    td()
+                                    td()
+                                }
                             }
                         }
+                        div(class: "payment-details"){
+                            h3(class: "payment-details-label", "Payment Details")
+                            table(width: "100%"){
+                                tr(){
+                                    td(class: "payment-table-left-column", "Nett Fare")
+                                    td(class: "payment-table-right-column", "IDR 2500000")
+                                }
+                                tr(){
+                                    td(class: "payment-table-left-column", "Taxes")
+                                    td(class: "payment-table-right-column", "IDR 250000")
+                                }
+                                tr(){
+                                    td(class: "payment-table-left-column", "Total")
+                                    td(class: "payment-table-right-column", "IDR 2750000")
+                                }
+                            }
+                        }
+                        div(class: "notice"){
+                            h3(class: "notice-label", "Notice")
+                            p("Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas sed diam eget risus varius blandit sit amet non magna. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec id elit non mi porta gravida at eget metus. Vestibulum id ligula porta felis euismod semper. Cras justo odio, dapibus ac facilisis in, egestas eget quam.")
+                        }
                     }
-                    div(class: "notice"){
-                        h3(class: "notice-label", "Notice")
-                        p("Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas sed diam eget risus varius blandit sit amet non magna. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec id elit non mi porta gravida at eget metus. Vestibulum id ligula porta felis euismod semper. Cras justo odio, dapibus ac facilisis in, egestas eget quam.")
-                    }
-                }
-                h3(id: "to", ticketDsl.toText)
-                h3(id: "from", ticketDsl.fromText)
-                p(ticketDsl.body)
-                // cycle through the stored section objects and create uppercase/bold section with body
-                for (s in ticketDsl.sections) {
-                    p {
-                        b(s.title.toUpperCase())
-                    }
-                    p(s.body)
                 }
             }
-        }
-        File file = new File("src/out.html")
-        file.write(writer.toString())
+            File file = new File("src/out.html")
+            file.write(writer.toString())
 //        println writer
-//        }
+        }
     }
 
     public static void main(String[] args){
@@ -245,7 +210,7 @@ class TicketDsl {
 //            }
             }
             ticketDsl.invokeMethod(inputs[0], param)
-            println "Masukkan input anda: "
+//            println "Masukkan input anda: "
         }
 
     }

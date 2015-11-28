@@ -1,6 +1,3 @@
-to
-from
-body
 companyName
 motto
 agentName
