@@ -1,20 +1,25 @@
 import groovy.xml.MarkupBuilder
 /**
- * Processes a simple DSL to create various formats of a memo: html
+ * Processes a simple DSL to create various formats of a ticket: html
  */
 class TicketDsl {
 
     String toText
     String fromText
     String body
-    def sections = []
+    def optAttrs = []
+    Vector<String> sections
 
     private static HashMap<String, Boolean> invocation_effect = new HashMap()
 
     public TicketDsl(){
-        invocation_effect.put("to", false)
-        invocation_effect.put("from", false)
-        invocation_effect.put("body", false)
+        File file = new File("src/config.txt")
+        List<String> oblig_atts = file.readLines()
+        for (String att : oblig_atts){
+//            println att
+            invocation_effect.put(att, false)
+        }
+        sections = new Vector<>()
     }
 
     /**
@@ -40,13 +45,13 @@ class TicketDsl {
     def from(String fromText) {
         this.fromText = fromText
         invocation_effect.replace("from", true)
-        println("Method from being invoked")
+//        println("Method from being invoked")
     }
 
     def body(String bodyText) {
         this.body = bodyText
         invocation_effect.replace("body", true)
-        println("Method body being invoked")
+//        println("Method body being invoked")
     }
 
     /**
@@ -55,8 +60,8 @@ class TicketDsl {
      */
     def methodMissing(String methodName, args) {
         println("Method Missing being invoked")
-        def section = new Section(title: methodName, body: args)
-        sections << section
+        def optAttr = new optAttr(name: methodName, vals: args)
+        optAttrs << optAttr
     }
 
     /**
@@ -75,32 +80,149 @@ class TicketDsl {
     private static doHtml(TicketDsl ticketDsl) {
         def writer = new StringWriter()
         def xml = new MarkupBuilder(writer)
-        if (invocation_effect.containsValue(false)){
-            println("Ada atribut yang belum didefinisikan!!")
-        }
-        else{
-            xml.html() {
-                head {
-                    title("Memo")
-                }
-                body {
-                    h1("Memo")
-                    h3(div: "to", ticketDsl.toText)
-                    h3(div: "from", ticketDsl.fromText)
-                    p(ticketDsl.body)
-                    // cycle through the stored section objects and create uppercase/bold section with body
-                    for (s in ticketDsl.sections) {
-                        p {
-                            b(s.title.toUpperCase())
+//        if (invocation_effect.containsValue(false)){
+//            println("Ada atribut yang belum didefinisikan!!")
+//        }
+//        else{
+        xml.html() {
+            head {
+                title("Ticket")
+                style('''body{
+                        background:none;
+                    }
+
+                    .container {
+                        width:960px;
+                        margin:auto;
+                    }
+
+                            .logo, .logo > img {
+                        width:200px;
+                    }
+                    .logo{
+                        margin:auto;
+                    }
+                    .brand {
+                        text-align: center;
+                        color:red;
+                        margin:0;
+                    }
+                    .tagline {
+                        text-align:center;
+                        margin:0;
+                    }
+                    .clear{clear:both;}
+                            .booking-details-label, .passenger-details-label, .itinerary-details-label, .payment-details-label, .notice-label{border-bottom: 1px solid;}
+                            #passenger-details-table-header, #itinerary-details-table-header{text-align:left;}
+                            .payment-table-right-column{text-align: right;}''')
+            }
+            body {
+                div(class: "container"){
+                    div(class: "logo"){
+                        img(src: "logo.png", alt: "Logo", align: "middle")
+                        h1(class: "brand", "Tiger Air")
+                        p(class: "tagline"){
+                            strong("We make people fly")
                         }
-                        p(s.body)
+                    }
+                    div(class: "clear")
+                    div(class: "booking details"){
+                        h3(class: "booking-details-label", "Booking Details")
+                        table(width: "100%"){
+                            tr(){
+                                td("Agent Name")
+                                td("PT. Trinusa Travelindo")
+                                td("Issued Date")
+                                td("Tanggal")
+                            }
+                            tr(){
+                                td("Booking Reference")
+                                td{
+                                    strong("NLAWB")
+                                }
+                            }
+                        }
+                    }
+                    div(class: "passenger-details"){
+                        h3(class: "passenger-details-label", "Passenger Details")
+                        table(width: "100%"){
+                            tr(id: "passenger-details-table-header"){
+                                th("Name")
+                                th("eTicket Number")
+                            }
+                            tr(){
+                                td("pet")
+                                td("72109212924124")
+                            }
+                            tr(){
+                                td("Mrs. Jeanice Ginting")
+                                td("97009249741123")
+                            }
+                        }
+                    }
+                    div(class: "itinerary-details"){
+                        h3(class: "itinerary-details-label", "Itenarary Details")
+                        table(width: "100%"){
+                            tr(id: "itinerary-details-table-header"){
+                                th("Date")
+                                th("Flight")
+                                th("Depart Airport")
+                                th("Arrive Airport")
+                                th("Depart Time")
+                                th("Arrive Time")
+                                th("Class")
+                                th("Bagg.")
+                            }
+                            tr(){
+                                td("21 APR 2016")
+                                td()
+                                td()
+                                td()
+                                td()
+                                td()
+                                td()
+                                td()
+                            }
+                        }
+                    }
+                    div(class: "payment-details"){
+                        h3(class: "payment-details-label", "Payment Details")
+                        table(width: "100%"){
+                            tr(){
+                                td(class: "payment-table-left-column", "Nett Fare")
+                                td(class: "payment-table-right-column", "IDR 2500000")
+                            }
+                            tr(){
+                                td(class: "payment-table-left-column", "Taxes")
+                                td(class: "payment-table-right-column", "IDR 250000")
+                            }
+                            tr(){
+                                td(class: "payment-table-left-column", "Total")
+                                td(class: "payment-table-right-column", "IDR 2750000")
+                            }
+                        }
+                    }
+                    div(class: "notice"){
+                        h3(class: "notice-label", "Notice")
+                        p("Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas sed diam eget risus varius blandit sit amet non magna. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec id elit non mi porta gravida at eget metus. Vestibulum id ligula porta felis euismod semper. Cras justo odio, dapibus ac facilisis in, egestas eget quam.")
                     }
                 }
+                h3(id: "to", ticketDsl.toText)
+                h3(id: "from", ticketDsl.fromText)
+                p(ticketDsl.body)
+                // cycle through the stored section objects and create uppercase/bold section with body
+                for (s in ticketDsl.sections) {
+                    p {
+                        b(s.title.toUpperCase())
+                    }
+                    p(s.body)
+                }
             }
-            File file = new File("src/out.html")
-            file.write(writer.toString())
-//        println writer
         }
+        File file = new File("src/out.html")
+        file.write(writer.toString())
+//        println writer
+//        }
     }
 
     public static void main(String[] args){

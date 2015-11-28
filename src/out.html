@@ -1,15 +1,128 @@
 <html>
   <head>
-    <title>Memo</title>
+    <title>Ticket</title>
+    <style>body{
+                        background:none;
+                    }
+
+                    .container {
+                        width:960px;
+                        margin:auto;
+                    }
+
+                            .logo, .logo &gt; img {
+                        width:200px;
+                    }
+                    .logo{
+                        margin:auto;
+                    }
+                    .brand {
+                        text-align: center;
+                        color:red;
+                        margin:0;
+                    }
+                    .tagline {
+                        text-align:center;
+                        margin:0;
+                    }
+                    .clear{clear:both;}
+                            .booking-details-label, .passenger-details-label, .itinerary-details-label, .payment-details-label, .notice-label{border-bottom: 1px solid;}
+                            #passenger-details-table-header, #itinerary-details-table-header{text-align:left;}
+                            .payment-table-right-column{text-align: right;}</style>
   </head>
   <body>
-    <h1>Memo</h1>
-    <h3 div='to' />
-    <h3 div='from' />
+    <div class='container'>
+      <div class='logo'>
+        <img src='logo.png' alt='Logo' align='middle' />
+        <h1 class='brand'>Tiger Air</h1>
+        <p class='tagline'>
+          <strong>We make people fly</strong>
+        </p>
+      </div>
+      <div class='clear' />
+      <div class='booking details'>
+        <h3 class='booking-details-label'>Booking Details</h3>
+        <table width='100%'>
+          <tr>
+            <td>Agent Name</td>
+            <td>PT. Trinusa Travelindo</td>
+            <td>Issued Date</td>
+            <td>Tanggal</td>
+          </tr>
+          <tr>
+            <td>Booking Reference</td>
+            <td>
+              <strong>NLAWB</strong>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class='passenger-details'>
+        <h3 class='passenger-details-label'>Passenger Details</h3>
+        <table width='100%'>
+          <tr id='passenger-details-table-header'>
+            <th>Name</th>
+            <th>eTicket Number</th>
+          </tr>
+          <tr>
+            <td>pet</td>
+            <td>72109212924124</td>
+          </tr>
+          <tr>
+            <td>Mrs. Jeanice Ginting</td>
+            <td>97009249741123</td>
+          </tr>
+        </table>
+      </div>
+      <div class='itinerary-details'>
+        <h3 class='itinerary-details-label'>Itenarary Details</h3>
+        <table width='100%'>
+          <tr id='itinerary-details-table-header'>
+            <th>Date</th>
+            <th>Flight</th>
+            <th>Depart Airport</th>
+            <th>Arrive Airport</th>
+            <th>Depart Time</th>
+            <th>Arrive Time</th>
+            <th>Class</th>
+            <th>Bagg.</th>
+          </tr>
+          <tr>
+            <td>21 APR 2016</td>
+            <td />
+            <td />
+            <td />
+            <td />
+            <td />
+            <td />
+            <td />
+          </tr>
+        </table>
+      </div>
+      <div class='payment-details'>
+        <h3 class='payment-details-label'>Payment Details</h3>
+        <table width='100%'>
+          <tr>
+            <td class='payment-table-left-column'>Nett Fare</td>
+            <td class='payment-table-right-column'>IDR 2500000</td>
+          </tr>
+          <tr>
+            <td class='payment-table-left-column'>Taxes</td>
+            <td class='payment-table-right-column'>IDR 250000</td>
+          </tr>
+          <tr>
+            <td class='payment-table-left-column'>Total</td>
+            <td class='payment-table-right-column'>IDR 2750000</td>
+          </tr>
+        </table>
+      </div>
+      <div class='notice'>
+        <h3 class='notice-label'>Notice</h3>
+        <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas sed diam eget risus varius blandit sit amet non magna. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec id elit non mi porta gravida at eget metus. Vestibulum id ligula porta felis euismod semper. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
+      </div>
+    </div>
+    <h3 id='to' />
+    <h3 id='from' />
     <p />
-    <p>
-      <b>HTML</b>
-    </p>
-    <p>[Ljava.lang.String;@11c20519</p>
   </body>
 </html>
