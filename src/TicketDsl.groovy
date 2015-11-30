@@ -70,6 +70,7 @@ class TicketDsl {
      * Use markupBuilder to create an html output
      */
     private static doHtml(TicketDsl ticketDsl) {
+        println "dohtml"
         def writer = new StringWriter()
         def xml = new MarkupBuilder(writer)
         if (invocation_effect.containsValue(false)){
@@ -88,7 +89,7 @@ class TicketDsl {
                         margin:auto;
                     }
 
-                            .logo, .logo > img {
+                            .logo, .logo img {
                         width:200px;
                     }
                     .logo{
@@ -120,17 +121,20 @@ class TicketDsl {
                         div(class: "clear")
                         div(class: "booking details"){
                             h3(class: "booking-details-label", "Booking Details")
-                            table(width: "100%"){
-                                tr(){
-                                    td("Agent Name")
-                                    td(class: "required", id: "agentName", {obligeAttrs.get("agentName").isEmpty() ? "" : obligeAttrs.get("agentName").get(0)}.call())
-                                    td("Issued Date")
-                                    td(class: "required", id: "issuedDate", {obligeAttrs.get("issuedDate").isEmpty() ? "" : obligeAttrs.get("issuedDate").get(0)}.call())
-                                }
-                                tr(){
-                                    td("Booking Reference")
-                                    td{
-                                        strong(class: "required", id: "bookRef", {obligeAttrs.get("bookRef").isEmpty() ? "" : obligeAttrs.get("bookRef").get(0)}.call())
+                            if (obligeAttrs.get("agentName").isEmpty()){}
+                            else{
+                                table(width: "100%"){
+                                    tr(){
+                                        td("Agent Name")
+                                        td(class: "required", id: "agentName", {obligeAttrs.get("agentName").isEmpty() ? "" : obligeAttrs.get("agentName").get(0)}.call())
+                                        td("Issued Date")
+                                        td(class: "required", id: "issuedDate", {obligeAttrs.get("issuedDate").isEmpty() ? "" : obligeAttrs.get("issuedDate").get(0)}.call())
+                                    }
+                                    tr(){
+                                        td("Booking Reference")
+                                        td{
+                                            strong(class: "required", id: "bookRef", {obligeAttrs.get("bookRef").isEmpty() ? "" : obligeAttrs.get("bookRef").get(0)}.call())
+                                        }
                                     }
                                 }
                             }
@@ -213,7 +217,7 @@ class TicketDsl {
             }
             File file = new File("src/out.html")
             file.write(writer.toString())
-//        println writer
+        println "writer"
         }
     }
 
@@ -231,13 +235,13 @@ class TicketDsl {
             inputs = input.split("[<>]")
             if (input.length() > 1){
                 param = Arrays.copyOfRange(inputs, 1, inputs.length)
-//                println "byk elemen yg diinput: " + inputs.length
-//                for (int i = 0; i < inputs.length; i++) {
-//                    println "Elemen ke $i adalah " + inputs[i]
-//                }
+                println "byk elemen yg diinput: " + inputs.length
+                for (int i = 0; i < inputs.length; i++) {
+                    println "Elemen ke $i adalah " + inputs[i]
+                }
             }
             ticketDsl.invokeMethod(inputs[0], param)
-//            println "Masukkan input anda: "
+            println "Finished "
         }
 
     }

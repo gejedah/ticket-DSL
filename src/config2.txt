@@ -15,4 +15,4 @@ iteneraryClass<ECO>
 iteneraryBaggage<20KG>
 paymentNett<250000>
 paymentTaxes<25000>
-notice<ggtq>
+notice<ggtq zzz>
