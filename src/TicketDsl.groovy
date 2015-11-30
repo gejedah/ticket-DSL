@@ -192,19 +192,21 @@ class TicketDsl {
                         div(class: "payment-details"){
                             h3(class: "payment-details-label", "Payment Details")
                             table(width: "100%"){
+                                String s1 = "\$".concat(obligeAttrs.get(idx))
+                                String s2 = "\$".concat(obligeAttrs.get(idx))
                                 tr(){
                                     td(class: "payment-table-left-column", "Nett Fare")
-                                    td(class: "payment-table-right-column required", id: "${obligeAttrs.get(idx)}", "\$".concat(obligeAttrs.get(idx)))
+                                    td(class: "payment-table-right-column required", id: "${obligeAttrs.get(idx)}", s1)
                                     idx++
                                 }
                                 tr(){
                                     td(class: "payment-table-left-column", "Taxes")
-                                    td(class: "payment-table-right-column required", id: "${obligeAttrs.get(idx)}", "\$".concat(obligeAttrs.get(idx)))
+                                    td(class: "payment-table-right-column required", id: "${obligeAttrs.get(idx)}", s2)
                                     idx++
                                 }
                                 tr(){
                                     td(class: "payment-table-left-column", "Total")
-                                    td(class: "payment-table-right-column required", id: "total")
+                                    td(class: "payment-table-right-column", id: "total", "MathTool.add(${s1}, ${s2})")
                                 }
                             }
                         }
