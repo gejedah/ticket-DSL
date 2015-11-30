@@ -16,3 +16,5 @@ iteneraryBaggage<20KG>
 paymentNett<250000>
 paymentTaxes<25000>
 notice<ggtq zzz>
+nabe<urumi>
+onizuka<albedo>

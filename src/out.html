@@ -64,10 +64,12 @@
             <th>Name</th>
             <th>eTicket Number</th>
           </tr>
+		#foreach($passenger in $passengers)
           <tr>
             <td class='looping-required' id='passengerName'>$passenger.passengerName</td>
             <td class='looping-required' id='eTicketNum'>$passenger.eTicketNum</td>
           </tr>
+		#end
         </table>
       </div>
       <div class='itinerary-details'>
@@ -83,6 +85,7 @@
             <th>Class</th>
             <th>Bagg.</th>
           </tr>
+		#foreach($itinerary in $itineraries)
           <tr>
             <td class='looping-required' id='iteneraryDate'>$itinerary.iteneraryDate</td>
             <td class='looping-required' id='iteneraryFlight'>$itinerary.iteneraryFlight</td>
@@ -93,6 +96,7 @@
             <td class='looping-required' id='iteneraryClass'>$itinerary.iteneraryClass</td>
             <td class='looping-required' id='iteneraryBaggage'>$itinerary.iteneraryBaggage</td>
           </tr>
+		#end
         </table>
       </div>
       <div class='payment-details'>

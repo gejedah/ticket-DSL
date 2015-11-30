@@ -20,6 +20,7 @@ class TicketDsl {
         for (String section: tempList){
             sections.put(section, new ArrayList<Attr>())
         }
+        Set<String> kunciSeksi = sections.keySet()
     }
 
     /**
@@ -73,6 +74,7 @@ class TicketDsl {
             println("Ada atribut yang belum didefinisikan!!")
         }
         else{
+            File file = new File("src/out.html")
             xml.html() {
                 head {
                     title("Ticket")
@@ -145,15 +147,14 @@ class TicketDsl {
                                     th("Name")
                                     th("eTicket Number")
                                 }
-                                Closure tes = {
-                                    tr(){
-                                        td(class: "looping-required", id: "${obligeAttrs.get(idx)}", "\$passenger.".concat(obligeAttrs.get(idx)))
-                                        idx++
-                                        td(class: "looping-required", id: "${obligeAttrs.get(idx)}", "\$passenger.".concat(obligeAttrs.get(idx)))
-                                        idx++
-                                    }
+                                writer.append('''\n\t\t#foreach($passenger in $passengers)''')
+                                tr(){
+                                    td(class: "looping-required", id: "${obligeAttrs.get(idx)}", "\$passenger.".concat(obligeAttrs.get(idx)))
+                                    idx++
+                                    td(class: "looping-required", id: "${obligeAttrs.get(idx)}", "\$passenger.".concat(obligeAttrs.get(idx)))
+                                    idx++
                                 }
-                                tes.call()
+                                writer.append('''\n\t\t#end''')
                             }
                         }
                         div(class: "itinerary-details"){
@@ -169,7 +170,8 @@ class TicketDsl {
                                     th("Class")
                                     th("Bagg.")
                                 }
-                                tr(){
+                                writer.append('''\n\t\t#foreach($itinerary in $itineraries)''')
+                                tr() {
                                     td(class: "looping-required", id: "${obligeAttrs.get(idx)}", "\$itinerary.".concat(obligeAttrs.get(idx)))
                                     idx++
                                     td(class: "looping-required", id: "${obligeAttrs.get(idx)}", "\$itinerary.".concat(obligeAttrs.get(idx)))
@@ -187,6 +189,7 @@ class TicketDsl {
                                     td(class: "looping-required", id: "${obligeAttrs.get(idx)}", "\$itinerary.".concat(obligeAttrs.get(idx)))
                                     idx++
                                 }
+                                writer.append('''\n\t\t#end''')
                             }
                         }
                         div(class: "payment-details"){
@@ -218,9 +221,7 @@ class TicketDsl {
                     }
                 }
             }
-            File file = new File("src/out.html")
             file.write(writer.toString())
-        println "writer"
         }
     }
 
@@ -238,14 +239,14 @@ class TicketDsl {
             inputs = input.split("[<>]")
             if (input.length() > 1){
                 param = Arrays.copyOfRange(inputs, 1, inputs.length)
-                println "byk elemen yg diinput: " + inputs.length
-                for (int i = 0; i < inputs.length; i++) {
-                    println "Elemen ke $i adalah " + inputs[i]
-                }
+//                println "byk elemen yg diinput: " + inputs.length
+//                for (int i = 0; i < inputs.length; i++) {
+//                    println "Elemen ke $i adalah " + inputs[i]
+//                }
             }
             ticketDsl.invokeMethod(inputs[0], param)
-            println "Finished "
         }
+        println "Finished "
 
     }
 }
