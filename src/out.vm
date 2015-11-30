@@ -147,6 +147,23 @@
           </tr>
         </table>
       </div>
+      <div class='etc'>
+        <h3 class='section-required'>etc</h3>
+        <table width='100%'>
+          <tr>
+            <td class='payment-table-left-column'>geje</td>
+            <td class='payment-table-right-column required' id='geje'>$geje</td>
+          </tr>
+          <tr>
+            <td class='payment-table-left-column'>gaje</td>
+            <td class='payment-table-right-column required' id='gaje'>$gaje</td>
+          </tr>
+          <tr>
+            <td class='payment-table-left-column'>gajah</td>
+            <td class='payment-table-right-column required' id='gajah'>$gajah</td>
+          </tr>
+        </table>
+      </div>
       <div class='albedo'>
         <h3 class='section-required'>albedo</h3>
         <table width='100%'>

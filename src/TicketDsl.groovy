@@ -29,6 +29,26 @@ class TicketDsl {
             obligeSections.put(section, new ArrayList<Attr>())
         }
         optSections.put("etc", new ArrayList<Attr>())
+
+        println "Daftar atribut wajib yang ada dari program: "
+        int nomor = 0
+
+        for (String att: obligeAttrs){
+            println "$nomor." + att
+            nomor++
+        }
+
+        println()
+        println "Daftar bagian yang sudah didefinisikan aplikasi"
+        nomor = 0
+
+        for (String section: obligeSections.keySet()){
+            println "$nomor." + section
+            nomor++
+        }
+
+        println "Masukkan input anda: "
+
     }
 
     def notice(String note){
@@ -108,10 +128,10 @@ class TicketDsl {
         def writer = new StringWriter()
         def xml = new MarkupBuilder(writer)
         if (invocation_effect.containsValue(false)){
-            println("Ada atribut yang belum didefinisikan!!")
+            println("Nilai atribut notice belum didefinisikan!!")
         }
         else{
-            File file = new File("src/out.vm")
+            File file = new File("src/out.html")
             xml.html() {
                 head {
                     title("Ticket")
@@ -177,6 +197,8 @@ class TicketDsl {
                                     }
                                 }
                             }
+
+                            // Jika ada tambahan input attribut opsional pada section ini
                             att_per_section = obligeSections.get("booking")
                             if (att_per_section.size() > 0){
                                 table(width: "100%") {
@@ -204,6 +226,19 @@ class TicketDsl {
                                     idx++
                                 }
                                 writer.append('''\n\t\t#end''')
+                            }
+
+                            // Jika ada tambahan input attribut opsional pada section ini
+                            att_per_section = obligeSections.get("passenger")
+                            if (att_per_section.size() > 0){
+                                table(width: "100%") {
+                                    for (Attr att : att_per_section) {
+                                        tr() {
+                                            td(class: "payment-table-left-column", att.name)
+                                            td(class: "payment-table-right-column required", id: att.name, "\$".concat(att.name))
+                                        }
+                                    }
+                                }
                             }
                         }
                         div(class: "itinerary-details") {
@@ -240,6 +275,19 @@ class TicketDsl {
                                 }
                                 writer.append('''\n\t\t#end''')
                             }
+
+                            // Jika ada tambahan input attribut opsional pada section ini
+                            att_per_section = obligeSections.get("itinerary")
+                            if (att_per_section.size() > 0){
+                                table(width: "100%") {
+                                    for (Attr att : att_per_section) {
+                                        tr() {
+                                            td(class: "payment-table-left-column", att.name)
+                                            td(class: "payment-table-right-column required", id: att.name, "\$".concat(att.name))
+                                        }
+                                    }
+                                }
+                            }
                         }
                         div(class: "payment-details") {
                             h3(class: "payment-details-label", "Payment Details")
@@ -261,11 +309,36 @@ class TicketDsl {
                                     td(class: "payment-table-right-column", id: "total", '''$math.add(${s1}, ${s2})''')
                                 }
                             }
+
+                            // Jika ada tambahan input attribut opsional pada section ini
+                            att_per_section = obligeSections.get("payment")
+                            if (att_per_section.size() > 0){
+                                table(width: "100%") {
+                                    for (Attr att : att_per_section) {
+                                        tr() {
+                                            td(class: "payment-table-left-column", att.name)
+                                            td(class: "payment-table-right-column required", id: att.name, "\$".concat(att.name))
+                                        }
+                                    }
+                                }
+                            }
                         }
                         div(class: "notice") {
                             h3(class: "notice-label", "Notice")
                             p(class: "required", id: "${obligeAttrs.get(idx)}", note)
-                            idx++
+
+                            // Jika ada tambahan input attribut opsional pada section ini
+                            att_per_section = obligeSections.get("notice")
+                            if (att_per_section.size() > 0){
+                                table(width: "100%") {
+                                    for (Attr att : att_per_section) {
+                                        tr() {
+                                            td(class: "payment-table-left-column", att.name)
+                                            td(class: "payment-table-right-column required", id: att.name, "\$".concat(att.name))
+                                        }
+                                    }
+                                }
+                            }
                         }
                         Set<String> sections = optSections.keySet()
                         for (String section : sections) {
@@ -293,8 +366,6 @@ class TicketDsl {
     }
 
     public static void main(String[] args){
-        println "Masukkan input anda: "
-
         BufferedReader bfReader = new BufferedReader(new InputStreamReader(System.in));
 
         TicketDsl ticketDsl = new TicketDsl()
