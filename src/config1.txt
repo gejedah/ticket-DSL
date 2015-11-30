@@ -1,6 +1,5 @@
 booking
 passenger
-itenerary
+itinerary
 payment
 notice
-etc

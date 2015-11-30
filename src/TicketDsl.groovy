@@ -4,23 +4,36 @@ import groovy.xml.MarkupBuilder
  */
 class TicketDsl {
     private static HashMap<String, Boolean> invocation_effect = new HashMap()
-    private static HashMap<String, List<Attr>> sections = new HashMap<>()
+    private static HashMap<String, List<Attr>> obligeSections = new HashMap<>()  // utk menampung optional attribut dari user
+    private static HashMap<String, List<Attr>> optSections = new HashMap<>()
     private static Vector<String> obligeAttrs = new Vector<>()
+    private static String note;
 
     public TicketDsl(){
         File file_attr = new File("src/config.txt")
         List<String> oblig_atts = file_attr.readLines()
         for (String att : oblig_atts){
 //            println att
-            invocation_effect.put(att, false)
+            if (att.equalsIgnoreCase("notice")){
+                invocation_effect.put(att, false)
+            }
+            else{
+                invocation_effect.put(att, true)
+            }
+            obligeAttrs.add(att)
         }
 
         File file_section = new File("src/config1.txt")
         List<String> tempList = file_section.readLines()
         for (String section: tempList){
-            sections.put(section, new ArrayList<Attr>())
+            obligeSections.put(section, new ArrayList<Attr>())
         }
-        Set<String> kunciSeksi = sections.keySet()
+        optSections.put("etc", new ArrayList<Attr>())
+    }
+
+    def notice(String note){
+        invocation_effect.replace("notice", true)
+        this.note = note
     }
 
     /**
@@ -29,26 +42,52 @@ class TicketDsl {
      */
     def methodMissing(String methodName, args) {
 //        println("Method Missing being invoked")
-        if (invocation_effect.containsKey(methodName)){
-            invocation_effect.replace(methodName, true)
-            obligeAttrs.add(methodName)
-//            println "argumen pertama" + obligeAttrs.get(methodName).get(0)
+        boolean member_of_obligeAttrs = false
+        boolean member_of_obligeSects = false
+        boolean member_of_optSects = false
+
+        for (String att: obligeAttrs){
+            if (att.equalsIgnoreCase(methodName)){
+                member_of_obligeAttrs = true
+            }
         }
-        else{
-            ArrayList tes = new ArrayList<>()
-            tes = args
-            tes.removeAll(Collections.singleton("")) // remove ""
-            def Attr = new Attr(name: methodName, vals: tes)
+
+        if (!member_of_obligeAttrs){
+            def Attr = new Attr(name: methodName, vals: args)
             if (args.length >= 1){
-                if (sections.containsKey(args[0])){
-                    sections.get(args[0]).add(Attr)
+
+                for (String section: obligeSections.keySet()){
+                    if (section.equalsIgnoreCase(args[0])){
+                        member_of_obligeSects = true
+                    }
+                }
+
+                if (member_of_obligeSects){
+                    obligeSections.get(args[0]).add(Attr)
+//                println "isi dari sect: " + obligeSections.get(args[0])
                 }
                 else{
-                    sections.put(args[0], new ArrayList<Attr>().add(Attr))
+
+                    for (String section: optSections.keySet()){
+                        if (section.equalsIgnoreCase(args[0])){
+                            member_of_optSects = true
+                        }
+                    }
+
+                    if (member_of_optSects){
+                        optSections.get(args[0]).add(Attr)
+                    }
+                    else {
+                        ArrayList<Attr> temp = new ArrayList<>()
+                        temp.add(Attr)
+                        optSections.put(args[0], temp)
+                    }
+//                println "isi dari sect: " + optSections.get(args[0])
                 }
             }
             else{
-                sections.get("etc").add(Attr)
+                optSections.get("etc").add(Attr)
+//            println "isi dari sect: " + obligeSections.get("etc")
             }
         }
     }
@@ -58,8 +97,7 @@ class TicketDsl {
      * we had to place MarkUpBuilder and StringWrite code in a static method as the delegate of the closure
      * did not have access to the system.out
      */
-    def getHtml() {
-        println("Method getHtml being invoked")
+    def html() {
         doHtml(this)
     }
 
@@ -67,14 +105,13 @@ class TicketDsl {
      * Use markupBuilder to create an html output
      */
     private static doHtml(TicketDsl ticketDsl) {
-        println "dohtml"
         def writer = new StringWriter()
         def xml = new MarkupBuilder(writer)
         if (invocation_effect.containsValue(false)){
             println("Ada atribut yang belum didefinisikan!!")
         }
         else{
-            File file = new File("src/out.html")
+            File file = new File("src/out.vm")
             xml.html() {
                 head {
                     title("Ticket")
@@ -87,7 +124,7 @@ class TicketDsl {
                         margin:auto;
                     }
 
-                            .logo, .logo img {
+                    .logo, .logo img {
                         width:200px;
                     }
                     .logo{
@@ -103,27 +140,28 @@ class TicketDsl {
                         margin:0;
                     }
                     .clear{clear:both;}
-                            .booking-details-label, .passenger-details-label, .itinerary-details-label, .payment-details-label, .notice-label{border-bottom: 1px solid;}
+                            .section-required, .booking-details-label, .passenger-details-label, .itinerary-details-label, .payment-details-label, .notice-label{border-bottom: 1px solid;}
                             #passenger-details-table-header, #itinerary-details-table-header{text-align:left;}
                             .payment-table-right-column{text-align: right;}''')
                 }
                 body {
                     int idx = 0
-                    div(class: "container"){
-                        div(class: "logo"){
+                    ArrayList<String> att_per_section
+                    div(class: "container") {
+                        div(class: "logo") {
                             img(src: "logo.png", alt: "Logo", align: "middle")
                             h1(class: "brand required", id: "${obligeAttrs.get(idx)}", "\$".concat(obligeAttrs.get(idx)))
                             idx++
-                            p(class: "tagline required", id: "${obligeAttrs.get(idx)}"){
+                            p(class: "tagline required", id: "${obligeAttrs.get(idx)}") {
                                 strong("\$".concat(obligeAttrs.get(idx)))
                                 idx++
                             }
                         }
                         div(class: "clear")
-                        div(class: "booking details"){
+                        div(class: "booking details") {
                             h3(class: "booking-details-label", "Booking Details")
-                            table(width: "100%"){
-                                tr(){
+                            table(width: "100%") {
+                                tr() {
                                     td("Agent Name")
                                     td(class: "required", id: "${obligeAttrs.get(idx)}", "\$".concat(obligeAttrs.get(idx)))
                                     idx++
@@ -131,24 +169,35 @@ class TicketDsl {
                                     td(class: "required", id: "${obligeAttrs.get(idx)}", "\$".concat(obligeAttrs.get(idx)))
                                     idx++
                                 }
-                                tr(){
+                                tr() {
                                     td("Booking Reference")
-                                    td{
+                                    td {
                                         strong(class: "required", id: "${obligeAttrs.get(idx)}", "\$".concat(obligeAttrs.get(idx)))
                                         idx++
                                     }
                                 }
                             }
+                            att_per_section = obligeSections.get("booking")
+                            if (att_per_section.size() > 0){
+                                table(width: "100%") {
+                                    for (Attr att : att_per_section) {
+                                        tr() {
+                                            td(class: "payment-table-left-column", att.name)
+                                            td(class: "payment-table-right-column required", id: att.name, "\$".concat(att.name))
+                                        }
+                                    }
+                                }
+                            }
                         }
-                        div(class: "passenger-details"){
+                        div(class: "passenger-details") {
                             h3(class: "passenger-details-label", "Passenger Details")
-                            table(width: "100%"){
-                                tr(id: "passenger-details-table-header"){
+                            table(width: "100%") {
+                                tr(id: "passenger-details-table-header") {
                                     th("Name")
                                     th("eTicket Number")
                                 }
                                 writer.append('''\n\t\t#foreach($passenger in $passengers)''')
-                                tr(){
+                                tr() {
                                     td(class: "looping-required", id: "${obligeAttrs.get(idx)}", "\$passenger.".concat(obligeAttrs.get(idx)))
                                     idx++
                                     td(class: "looping-required", id: "${obligeAttrs.get(idx)}", "\$passenger.".concat(obligeAttrs.get(idx)))
@@ -157,10 +206,10 @@ class TicketDsl {
                                 writer.append('''\n\t\t#end''')
                             }
                         }
-                        div(class: "itinerary-details"){
+                        div(class: "itinerary-details") {
                             h3(class: "itinerary-details-label", "Itenarary Details")
-                            table(width: "100%"){
-                                tr(id: "itinerary-details-table-header"){
+                            table(width: "100%") {
+                                tr(id: "itinerary-details-table-header") {
                                     th("Date")
                                     th("Flight")
                                     th("Depart Airport")
@@ -192,36 +241,54 @@ class TicketDsl {
                                 writer.append('''\n\t\t#end''')
                             }
                         }
-                        div(class: "payment-details"){
+                        div(class: "payment-details") {
                             h3(class: "payment-details-label", "Payment Details")
-                            table(width: "100%"){
+                            table(width: "100%") {
                                 String s1 = "\$".concat(obligeAttrs.get(idx))
                                 String s2 = "\$".concat(obligeAttrs.get(idx))
-                                tr(){
+                                tr() {
                                     td(class: "payment-table-left-column", "Nett Fare")
                                     td(class: "payment-table-right-column required", id: "${obligeAttrs.get(idx)}", s1)
                                     idx++
                                 }
-                                tr(){
+                                tr() {
                                     td(class: "payment-table-left-column", "Taxes")
                                     td(class: "payment-table-right-column required", id: "${obligeAttrs.get(idx)}", s2)
                                     idx++
                                 }
-                                tr(){
+                                tr() {
                                     td(class: "payment-table-left-column", "Total")
-                                    td(class: "payment-table-right-column", id: "total", "MathTool.add(${s1}, ${s2})")
+                                    td(class: "payment-table-right-column", id: "total", '''$math.add(${s1}, ${s2})''')
                                 }
                             }
                         }
-                        div(class: "notice"){
+                        div(class: "notice") {
                             h3(class: "notice-label", "Notice")
-                            p(class: "required", id: "${obligeAttrs.get(idx)}", "\$".concat(obligeAttrs.get(idx)))
+                            p(class: "required", id: "${obligeAttrs.get(idx)}", note)
                             idx++
+                        }
+                        Set<String> sections = optSections.keySet()
+                        for (String section : sections) {
+                            att_per_section = optSections.get(section)
+                            if (att_per_section.size() > 0){
+                                div(class: section) {
+                                    h3(class: "section-required", section)
+                                    table(width: "100%") {
+                                        for (Attr att : att_per_section) {
+                                            tr() {
+                                                td(class: "payment-table-left-column", att.name)
+                                                td(class: "payment-table-right-column required", id: att.name, "\$".concat(att.name))
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                 }
             }
             file.write(writer.toString())
+            println "Template being generated!!"
         }
     }
 
@@ -234,6 +301,7 @@ class TicketDsl {
         String input;
         String[] inputs
         String[] param
+        ArrayList tes = new ArrayList<>()
 
         while ((input = bfReader.readLine()) != null && input.length()!= 0 && input != "exit") {
             inputs = input.split("[<>]")
@@ -244,6 +312,8 @@ class TicketDsl {
 //                    println "Elemen ke $i adalah " + inputs[i]
 //                }
             }
+            tes = param
+            tes.removeAll(Collections.singleton("")) // remove ""
             ticketDsl.invokeMethod(inputs[0], param)
         }
         println "Finished "

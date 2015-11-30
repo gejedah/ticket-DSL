@@ -10,7 +10,7 @@
                         margin:auto;
                     }
 
-                            .logo, .logo img {
+                    .logo, .logo img {
                         width:200px;
                     }
                     .logo{
@@ -26,7 +26,7 @@
                         margin:0;
                     }
                     .clear{clear:both;}
-                            .booking-details-label, .passenger-details-label, .itinerary-details-label, .payment-details-label, .notice-label{border-bottom: 1px solid;}
+                            .section-required, .booking-details-label, .passenger-details-label, .itinerary-details-label, .payment-details-label, .notice-label{border-bottom: 1px solid;}
                             #passenger-details-table-header, #itinerary-details-table-header{text-align:left;}
                             .payment-table-right-column{text-align: right;}</style>
   </head>
@@ -54,6 +54,16 @@
             <td>
               <strong class='required' id='bookRef'>$bookRef</strong>
             </td>
+          </tr>
+        </table>
+        <table width='100%'>
+          <tr>
+            <td class='payment-table-left-column'>ggtq</td>
+            <td class='payment-table-right-column required' id='ggtq'>$ggtq</td>
+          </tr>
+          <tr>
+            <td class='payment-table-left-column'>luck</td>
+            <td class='payment-table-right-column required' id='luck'>$luck</td>
           </tr>
         </table>
       </div>
@@ -87,14 +97,14 @@
           </tr>
 		#foreach($itinerary in $itineraries)
           <tr>
-            <td class='looping-required' id='iteneraryDate'>$itinerary.iteneraryDate</td>
-            <td class='looping-required' id='iteneraryFlight'>$itinerary.iteneraryFlight</td>
-            <td class='looping-required' id='iteneraryDepartAirport'>$itinerary.iteneraryDepartAirport</td>
-            <td class='looping-required' id='iteneraryArriveAirport'>$itinerary.iteneraryArriveAirport</td>
-            <td class='looping-required' id='iteneraryDepartTime'>$itinerary.iteneraryDepartTime</td>
-            <td class='looping-required' id='iteneraryArrivetime'>$itinerary.iteneraryArrivetime</td>
-            <td class='looping-required' id='iteneraryClass'>$itinerary.iteneraryClass</td>
-            <td class='looping-required' id='iteneraryBaggage'>$itinerary.iteneraryBaggage</td>
+            <td class='looping-required' id='itineraryDate'>$itinerary.itineraryDate</td>
+            <td class='looping-required' id='itineraryFlight'>$itinerary.itineraryFlight</td>
+            <td class='looping-required' id='itineraryDepartAirport'>$itinerary.itineraryDepartAirport</td>
+            <td class='looping-required' id='itineraryArriveAirport'>$itinerary.itineraryArriveAirport</td>
+            <td class='looping-required' id='itineraryDepartTime'>$itinerary.itineraryDepartTime</td>
+            <td class='looping-required' id='itineraryArrivetime'>$itinerary.itineraryArrivetime</td>
+            <td class='looping-required' id='itineraryClass'>$itinerary.itineraryClass</td>
+            <td class='looping-required' id='itineraryBaggage'>$itinerary.itineraryBaggage</td>
           </tr>
 		#end
         </table>
@@ -112,13 +122,43 @@
           </tr>
           <tr>
             <td class='payment-table-left-column'>Total</td>
-            <td class='payment-table-right-column' id='total'>MathTool.add($paymentNett, $paymentNett)</td>
+            <td class='payment-table-right-column' id='total'>$math.add(${s1}, ${s2})</td>
           </tr>
         </table>
       </div>
       <div class='notice'>
         <h3 class='notice-label'>Notice</h3>
-        <p class='required' id='notice'>$notice</p>
+        <p class='required' id='notice'>ggtq zzz</p>
+      </div>
+      <div class='urumi'>
+        <h3 class='section-required'>urumi</h3>
+        <table width='100%'>
+          <tr>
+            <td class='payment-table-left-column'>nabe</td>
+            <td class='payment-table-right-column required' id='nabe'>$nabe</td>
+          </tr>
+          <tr>
+            <td class='payment-table-left-column'>kanzaki</td>
+            <td class='payment-table-right-column required' id='kanzaki'>$kanzaki</td>
+          </tr>
+          <tr>
+            <td class='payment-table-left-column'>smart</td>
+            <td class='payment-table-right-column required' id='smart'>$smart</td>
+          </tr>
+        </table>
+      </div>
+      <div class='albedo'>
+        <h3 class='section-required'>albedo</h3>
+        <table width='100%'>
+          <tr>
+            <td class='payment-table-left-column'>onizuka</td>
+            <td class='payment-table-right-column required' id='onizuka'>$onizuka</td>
+          </tr>
+          <tr>
+            <td class='payment-table-left-column'>oni</td>
+            <td class='payment-table-right-column required' id='oni'>$oni</td>
+          </tr>
+        </table>
       </div>
     </div>
   </body>

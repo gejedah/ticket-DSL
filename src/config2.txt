@@ -5,16 +5,27 @@ issuedDate<28 Nov 2015>
 bookRef<NLAWB>
 passengerName<Kevin><Edmund><Winson>
 eTicketNum<97009249741123><97009249741124><97009249741125>
-iteneraryDate<21 Apr 2016>
-iteneraryFlight<GA 135>
-iteneraryDepartAirport<JAKARTA (CGK)>
-iteneraryArriveAirport<MEDAN (KNO)>
-iteneraryDepartTime<13.50>
-iteneraryArrivetime<15.50>
-iteneraryClass<ECO>
-iteneraryBaggage<20KG>
+itineraryDate<21 Apr 2016>
+itineraryFlight<GA 135>
+itineraryDepartAirport<JAKARTA (CGK)>
+itineraryArriveAirport<MEDAN (KNO)>
+itineraryDepartTime<13.50>
+itineraryArrivetime<15.50>
+itineraryClass<ECO>
+itineraryBaggage<20KG>
 paymentNett<250000>
 paymentTaxes<25000>
 notice<ggtq zzz>
 nabe<urumi>
-onizuka<albedo>
+kanzaki<urumi>
+smart<urumi>
+onizuka<albedo><lazy>
+oni<albedo><knn>
+ggtq<booking>
+agentname<booking>
+issueddate<booking>
+issueddate<Booking>
+luck<booking>
+geje
+gaje
+gajah
