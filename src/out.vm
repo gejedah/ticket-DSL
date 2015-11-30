@@ -65,8 +65,8 @@
             <th>eTicket Number</th>
           </tr>
           <tr>
-            <td class='looping-required' id='passengerName'>$passenger.passengerName</td>
-            <td class='looping-required' id='eTicketNum'>$passenger.eTicketNum</td>
+            <td class='looping-required' id='passengerName'>$passengerName</td>
+            <td class='looping-required' id='eTicketNum'>$eTicketNum</td>
           </tr>
         </table>
       </div>
@@ -84,14 +84,14 @@
             <th>Bagg.</th>
           </tr>
           <tr>
-            <td class='looping-required' id='iteneraryDate'>$itinerary.iteneraryDate</td>
-            <td class='looping-required' id='iteneraryFlight'>$itinerary.iteneraryFlight</td>
-            <td class='looping-required' id='iteneraryDepartAirport'>$itinerary.iteneraryDepartAirport</td>
-            <td class='looping-required' id='iteneraryArriveAirport'>$itinerary.iteneraryArriveAirport</td>
-            <td class='looping-required' id='iteneraryDepartTime'>$itinerary.iteneraryDepartTime</td>
-            <td class='looping-required' id='iteneraryArrivetime'>$itinerary.iteneraryArrivetime</td>
-            <td class='looping-required' id='iteneraryClass'>$itinerary.iteneraryClass</td>
-            <td class='looping-required' id='iteneraryBaggage'>$itinerary.iteneraryBaggage</td>
+            <td class='looping-required' id='Date'>$Date</td>
+            <td class='looping-required' id='Flight'>$Flight</td>
+            <td class='looping-required' id='DepartAirport'>$DepartAirport</td>
+            <td class='looping-required' id='ArriveAirport'>$ArriveAirport</td>
+            <td class='looping-required' id='DepartTime'>$DepartTime</td>
+            <td class='looping-required' id='Arrivetime'>$Arrivetime</td>
+            <td class='looping-required' id='Class'>$Class</td>
+            <td class='looping-required' id='Baggage'>$Baggage</td>
           </tr>
         </table>
       </div>

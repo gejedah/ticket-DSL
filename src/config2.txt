@@ -1,8 +1,8 @@
 companyName<LionAir>
 motto<We Make People Fly>
 agentName<Traveloka>
-bookRef<NLAWB>
 issuedDate<28 Nov 2015>
+bookRef<NLAWB>
 passengerName<Kevin><Edmund><Winson>
 eTicketNum<97009249741123><97009249741124><97009249741125>
 iteneraryDate<21 Apr 2016>

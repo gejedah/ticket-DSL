@@ -3,13 +3,9 @@ import groovy.xml.MarkupBuilder
  * Processes a simple DSL to create various formats of a ticket: html
  */
 class TicketDsl {
-    String vcompanyName
-    String vmotto
-    String vagentName
-
     private static HashMap<String, Boolean> invocation_effect = new HashMap()
     private static HashMap<String, List<Attr>> sections = new HashMap<>()
-    private static HashMap<String, List<String>> obligeAttrs = new HashMap<>()
+    private static Vector<String> obligeAttrs = new Vector<>()
 
     public TicketDsl(){
         File file_attr = new File("src/config.txt")
@@ -34,14 +30,14 @@ class TicketDsl {
 //        println("Method Missing being invoked")
         if (invocation_effect.containsKey(methodName)){
             invocation_effect.replace(methodName, true)
-            ArrayList tes = new ArrayList<>()
-            tes = args
-            tes.removeAll(Collections.singleton("")) // remove ""
-            obligeAttrs.put(methodName, tes)
+            obligeAttrs.add(methodName)
 //            println "argumen pertama" + obligeAttrs.get(methodName).get(0)
         }
         else{
-            def Attr = new Attr(name: methodName, vals: args)
+            ArrayList tes = new ArrayList<>()
+            tes = args
+            tes.removeAll(Collections.singleton("")) // remove ""
+            def Attr = new Attr(name: methodName, vals: tes)
             if (args.length >= 1){
                 if (sections.containsKey(args[0])){
                     sections.get(args[0]).add(Attr)
@@ -109,12 +105,15 @@ class TicketDsl {
                             .payment-table-right-column{text-align: right;}''')
                 }
                 body {
+                    int idx = 0
                     div(class: "container"){
                         div(class: "logo"){
                             img(src: "logo.png", alt: "Logo", align: "middle")
-                            h1(class: "brand required", id: "companyName", {obligeAttrs.get("companyName").isEmpty() ? "" : obligeAttrs.get("companyName").get(0)}.call())
-                            p(class: "tagline required", id: "motto"){
-                                strong({obligeAttrs.get("motto").isEmpty() ? "" : obligeAttrs.get("motto").get(0)}.call())
+                            h1(class: "brand required", id: "${obligeAttrs.get(idx)}", "\$".concat(obligeAttrs.get(idx)))
+                            idx++
+                            p(class: "tagline required", id: "${obligeAttrs.get(idx)}"){
+                                strong("\$".concat(obligeAttrs.get(idx)))
+                                idx++
                             }
                         }
                         div(class: "clear")
@@ -123,14 +122,17 @@ class TicketDsl {
                             table(width: "100%"){
                                 tr(){
                                     td("Agent Name")
-                                    td(class: "required", id: "agentName", {obligeAttrs.get("agentName").isEmpty() ? "" : obligeAttrs.get("agentName").get(0)}.call())
+                                    td(class: "required", id: "${obligeAttrs.get(idx)}", "\$".concat(obligeAttrs.get(idx)))
+                                    idx++
                                     td("Issued Date")
-                                    td(class: "required", id: "issuedDate", {obligeAttrs.get("issuedDate").isEmpty() ? "" : obligeAttrs.get("issuedDate").get(0)}.call())
+                                    td(class: "required", id: "${obligeAttrs.get(idx)}", "\$".concat(obligeAttrs.get(idx)))
+                                    idx++
                                 }
                                 tr(){
                                     td("Booking Reference")
                                     td{
-                                        strong(class: "required", id: "bookRef", {obligeAttrs.get("bookRef").isEmpty() ? "" : obligeAttrs.get("bookRef").get(0)}.call())
+                                        strong(class: "required", id: "${obligeAttrs.get(idx)}", "\$".concat(obligeAttrs.get(idx)))
+                                        idx++
                                     }
                                 }
                             }
@@ -143,13 +145,11 @@ class TicketDsl {
                                     th("eTicket Number")
                                 }
                                 Closure tes = {
-                                    int i = 0
-                                    while (i < obligeAttrs.get("passengerName").size()){
-                                        tr(){
-                                            td(class: "required", id: "passengerName $i", {obligeAttrs.get("passengerName").isEmpty() ? "" : obligeAttrs.get("passengerName").get(i)}.call())
-                                            td(class: "required", id: "eTicketNum $i", {obligeAttrs.get("eTicketNum").isEmpty() ? "" : obligeAttrs.get("eTicketNum").get(i)}.call())
-                                        }
-                                        i++
+                                    tr(){
+                                        td(class: "looping-required", id: "${obligeAttrs.get(idx)}", "\$passenger.".concat(obligeAttrs.get(idx)))
+                                        idx++
+                                        td(class: "looping-required", id: "${obligeAttrs.get(idx)}", "\$passenger.".concat(obligeAttrs.get(idx)))
+                                        idx++
                                     }
                                 }
                                 tes.call()
@@ -168,23 +168,24 @@ class TicketDsl {
                                     th("Class")
                                     th("Bagg.")
                                 }
-                                Closure tes = {
-                                    int i = 0
-                                    while (i<obligeAttrs.get("iteneraryDate").size()){
-                                        tr(){
-                                            td(class: "required", id: "iteneraryDate $i", {obligeAttrs.get("iteneraryDate").isEmpty() ? "" : obligeAttrs.get("iteneraryDate").get(i)}.call())
-                                            td(class: "required", id: "iteneraryFlight $i", {obligeAttrs.get("iteneraryFlight").isEmpty() ? "" : obligeAttrs.get("iteneraryFlight").get(i)}.call())
-                                            td(class: "required", id: "iteneraryDepartAirport $i", {obligeAttrs.get("iteneraryDepartAirport").isEmpty() ? "" : obligeAttrs.get("iteneraryDepartAirport").get(i)}.call())
-                                            td(class: "required", id: "iteneraryArriveAirport $i", {obligeAttrs.get("iteneraryArriveAirport").isEmpty() ? "" : obligeAttrs.get("iteneraryArriveAirport").get(i)}.call())
-                                            td(class: "required", id: "iteneraryDepartTime $i", {obligeAttrs.get("iteneraryDepartTime").isEmpty() ? "" : obligeAttrs.get("iteneraryDepartTime").get(i)}.call())
-                                            td(class: "required", id: "iteneraryArrivetime $i", {obligeAttrs.get("iteneraryArrivetime").isEmpty() ? "" : obligeAttrs.get("iteneraryArrivetime").get(i)}.call())
-                                            td(class: "required", id: "iteneraryClass $i", {obligeAttrs.get("iteneraryClass").isEmpty() ? "" : obligeAttrs.get("iteneraryClass").get(i)}.call())
-                                            td(class: "required", id: "iteneraryBaggage $i", {obligeAttrs.get("iteneraryBaggage").isEmpty() ? "" : obligeAttrs.get("iteneraryBaggage").get(i)}.call())
-                                        }
-                                        i++
-                                    }
+                                tr(){
+                                    td(class: "looping-required", id: "${obligeAttrs.get(idx)}", "\$itinerary.".concat(obligeAttrs.get(idx)))
+                                    idx++
+                                    td(class: "looping-required", id: "${obligeAttrs.get(idx)}", "\$itinerary.".concat(obligeAttrs.get(idx)))
+                                    idx++
+                                    td(class: "looping-required", id: "${obligeAttrs.get(idx)}", "\$itinerary.".concat(obligeAttrs.get(idx)))
+                                    idx++
+                                    td(class: "looping-required", id: "${obligeAttrs.get(idx)}", "\$itinerary.".concat(obligeAttrs.get(idx)))
+                                    idx++
+                                    td(class: "looping-required", id: "${obligeAttrs.get(idx)}", "\$itinerary.".concat(obligeAttrs.get(idx)))
+                                    idx++
+                                    td(class: "looping-required", id: "${obligeAttrs.get(idx)}", "\$itinerary.".concat(obligeAttrs.get(idx)))
+                                    idx++
+                                    td(class: "looping-required", id: "${obligeAttrs.get(idx)}", "\$itinerary.".concat(obligeAttrs.get(idx)))
+                                    idx++
+                                    td(class: "looping-required", id: "${obligeAttrs.get(idx)}", "\$itinerary.".concat(obligeAttrs.get(idx)))
+                                    idx++
                                 }
-                                tes.call()
                             }
                         }
                         div(class: "payment-details"){
@@ -192,11 +193,13 @@ class TicketDsl {
                             table(width: "100%"){
                                 tr(){
                                     td(class: "payment-table-left-column", "Nett Fare")
-                                    td(class: "payment-table-right-column required", id: "paymentNett", {obligeAttrs.get("paymentNett").isEmpty() ? "" : obligeAttrs.get("paymentNett").get(0)}.call())
+                                    td(class: "payment-table-right-column required", id: "${obligeAttrs.get(idx)}", "\$".concat(obligeAttrs.get(idx)))
+                                    idx++
                                 }
                                 tr(){
                                     td(class: "payment-table-left-column", "Taxes")
-                                    td(class: "payment-table-right-column required", id: "paymentTaxes", {obligeAttrs.get("paymentTaxes").isEmpty() ? "" : obligeAttrs.get("paymentTaxes").get(0)}.call())
+                                    td(class: "payment-table-right-column required", id: "${obligeAttrs.get(idx)}", "\$".concat(obligeAttrs.get(idx)))
+                                    idx++
                                 }
                                 tr(){
                                     td(class: "payment-table-left-column", "Total")
@@ -206,7 +209,8 @@ class TicketDsl {
                         }
                         div(class: "notice"){
                             h3(class: "notice-label", "Notice")
-                            p(class: "required", id: "notice", {obligeAttrs.get("notice").isEmpty() ? "" : obligeAttrs.get("notice").get(0)}.call())
+                            p(class: "required", id: "${obligeAttrs.get(idx)}", "\$".concat(obligeAttrs.get(idx)))
+                            idx++
                         }
                     }
                 }
