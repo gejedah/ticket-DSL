@@ -88,7 +88,7 @@ class TicketDsl {
                         margin:auto;
                     }
 
-                            .logo, .logo > img {
+                            .logo, .logo img {
                         width:200px;
                     }
                     .logo{
