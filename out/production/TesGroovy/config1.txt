@@ -1,6 +1,0 @@
-booking
-passenger
-itenerary
-payment
-notice
-etc

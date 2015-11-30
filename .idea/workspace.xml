@@ -1,7 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="00187b9f-fc38-46e2-ab15-f985037aee5c" name="Default" comment="" />
+    <list default="true" id="00187b9f-fc38-46e2-ab15-f985037aee5c" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ticket-DSL.iml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TesGroovy/Attr.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TesGroovy/TicketDsl$_doHtml_closure1$_closure2.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TesGroovy/TicketDsl$_doHtml_closure1$_closure3$_closure4$_closure10.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TesGroovy/TicketDsl$_doHtml_closure1$_closure3$_closure4$_closure5$_closure11.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TesGroovy/TicketDsl$_doHtml_closure1$_closure3$_closure4$_closure5.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TesGroovy/TicketDsl$_doHtml_closure1$_closure3$_closure4$_closure6$_closure12$_closure13.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TesGroovy/TicketDsl$_doHtml_closure1$_closure3$_closure4$_closure6$_closure12$_closure14$_closure15.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TesGroovy/TicketDsl$_doHtml_closure1$_closure3$_closure4$_closure6$_closure12$_closure14.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TesGroovy/TicketDsl$_doHtml_closure1$_closure3$_closure4$_closure6$_closure12.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TesGroovy/TicketDsl$_doHtml_closure1$_closure3$_closure4$_closure6.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TesGroovy/TicketDsl$_doHtml_closure1$_closure3$_closure4$_closure7$_closure16$_closure17.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TesGroovy/TicketDsl$_doHtml_closure1$_closure3$_closure4$_closure7$_closure16$_closure18$_closure19.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TesGroovy/TicketDsl$_doHtml_closure1$_closure3$_closure4$_closure7$_closure16$_closure18.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TesGroovy/TicketDsl$_doHtml_closure1$_closure3$_closure4$_closure7$_closure16.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TesGroovy/TicketDsl$_doHtml_closure1$_closure3$_closure4$_closure7.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TesGroovy/TicketDsl$_doHtml_closure1$_closure3$_closure4$_closure8$_closure20$_closure21.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TesGroovy/TicketDsl$_doHtml_closure1$_closure3$_closure4$_closure8$_closure20$_closure22.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TesGroovy/TicketDsl$_doHtml_closure1$_closure3$_closure4$_closure8$_closure20.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TesGroovy/TicketDsl$_doHtml_closure1$_closure3$_closure4$_closure8.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TesGroovy/TicketDsl$_doHtml_closure1$_closure3$_closure4$_closure9$_closure23$_closure24.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TesGroovy/TicketDsl$_doHtml_closure1$_closure3$_closure4$_closure9$_closure23$_closure25.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TesGroovy/TicketDsl$_doHtml_closure1$_closure3$_closure4$_closure9$_closure23$_closure26.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TesGroovy/TicketDsl$_doHtml_closure1$_closure3$_closure4$_closure9$_closure23.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TesGroovy/TicketDsl$_doHtml_closure1$_closure3$_closure4$_closure9.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TesGroovy/TicketDsl$_doHtml_closure1$_closure3$_closure4.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TesGroovy/TicketDsl$_doHtml_closure1$_closure3.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TesGroovy/TicketDsl$_doHtml_closure1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TesGroovy/TicketDsl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TesGroovy/config.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TesGroovy/config1.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TesGroovy/config2.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TesGroovy/contoh.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TesGroovy/logo.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TesGroovy/out.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TesGroovy/out.vm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/out.html" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/TicketDsl.groovy" afterPath="$PROJECT_DIR$/src/TicketDsl.groovy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/config2.txt" afterPath="$PROJECT_DIR$/src/config2.txt" />
+    </list>
     <ignored path="TesGroovy.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -23,11 +64,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="TicketDsl.groovy" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TicketDsl.groovy" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/TicketDsl.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="169" column="33" selection-start-line="169" selection-start-column="33" selection-end-line="169" selection-end-column="33" />
+            <state vertical-scroll-proportion="0.2670157">
+              <caret line="6" column="46" selection-start-line="6" selection-start-column="44" selection-end-line="6" selection-end-column="46" />
               <folding />
             </state>
           </provider>
@@ -53,10 +94,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config2.txt" pinned="false" current-in-tab="true">
+      <file leaf-file-name="config2.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/config2.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.42146596">
+            <state vertical-scroll-proportion="0.0">
               <caret line="10" column="35" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
               <folding />
             </state>
@@ -97,17 +138,7 @@
         <entry file="file://$PROJECT_DIR$/src/Attr.groovy">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="3" column="6" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="out.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/out.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.153846">
-              <caret line="36" column="58" selection-start-line="36" selection-start-column="58" selection-end-line="36" selection-end-column="58" />
+              <caret line="4" column="15" selection-start-line="4" selection-start-column="15" selection-end-line="4" selection-end-column="15" />
               <folding />
             </state>
           </provider>
@@ -772,7 +803,7 @@
       <workItem from="1448693946328" duration="18415000" />
       <workItem from="1448721602898" duration="13415000" />
       <workItem from="1448770335542" duration="123000" />
-      <workItem from="1448865274838" duration="5813000" />
+      <workItem from="1448865274838" duration="6157000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1448703858019</created>
@@ -846,7 +877,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="63571000" />
+    <option name="totallyTimeSpent" value="63915000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -854,18 +885,19 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="WINDOWED" visible="false" show_stripe_button="true" weight="0.37291983" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" x="422" y="156" width="509" height="323" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="GitLabIntegration" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32569557" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24659607" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -876,7 +908,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -924,7 +955,8 @@
     <MESSAGE value="output src code raw" />
     <MESSAGE value="iseng" />
     <MESSAGE value="tahap penyesuain" />
-    <option name="LAST_COMMIT_MESSAGE" value="tahap penyesuain" />
+    <MESSAGE value="sebelum penggabungan" />
+    <option name="LAST_COMMIT_MESSAGE" value="sebelum penggabungan" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -985,14 +1017,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/out.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="42" selection-start-line="12" selection-start-column="42" selection-end-line="12" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/TicketDsl.groovy">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1041,14 +1065,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/out.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="42" selection-start-line="12" selection-start-column="42" selection-end-line="12" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/TicketDsl.groovy">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1061,14 +1077,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="64" column="39" selection-start-line="64" selection-start-column="39" selection-end-line="64" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/out.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="42" selection-start-line="12" selection-start-column="42" selection-end-line="12" selection-end-column="42" />
           <folding />
         </state>
       </provider>
@@ -1108,14 +1116,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Attr.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="6" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/contoh.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.65384614">
@@ -1128,22 +1128,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="5" column="3" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="2" column="14" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/out.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.153846">
-          <caret line="36" column="58" selection-start-line="36" selection-start-column="58" selection-end-line="36" selection-end-column="58" />
           <folding />
         </state>
       </provider>
@@ -1164,18 +1148,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/TicketDsl.groovy">
+    <entry file="file://$PROJECT_DIR$/src/config2.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="169" column="33" selection-start-line="169" selection-start-column="33" selection-end-line="169" selection-end-column="33" />
+          <caret line="10" column="35" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/config2.txt">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.42146596">
-          <caret line="10" column="35" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="14" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Attr.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="4" column="15" selection-start-line="4" selection-start-column="15" selection-end-line="4" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TicketDsl.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2670157">
+          <caret line="6" column="46" selection-start-line="6" selection-start-column="44" selection-end-line="6" selection-end-column="46" />
           <folding />
         </state>
       </provider>

@@ -66,6 +66,7 @@ class TicketDsl {
      * Use markupBuilder to create an html output
      */
     private static doHtml(TicketDsl ticketDsl) {
+        println "dohtml"
         def writer = new StringWriter()
         def xml = new MarkupBuilder(writer)
         if (invocation_effect.containsValue(false)){
@@ -217,7 +218,7 @@ class TicketDsl {
             }
             File file = new File("src/out.html")
             file.write(writer.toString())
-//        println writer
+        println "writer"
         }
     }
 
@@ -235,13 +236,13 @@ class TicketDsl {
             inputs = input.split("[<>]")
             if (input.length() > 1){
                 param = Arrays.copyOfRange(inputs, 1, inputs.length)
-//                println "byk elemen yg diinput: " + inputs.length
-//                for (int i = 0; i < inputs.length; i++) {
-//                    println "Elemen ke $i adalah " + inputs[i]
-//                }
+                println "byk elemen yg diinput: " + inputs.length
+                for (int i = 0; i < inputs.length; i++) {
+                    println "Elemen ke $i adalah " + inputs[i]
+                }
             }
             ticketDsl.invokeMethod(inputs[0], param)
-//            println "Masukkan input anda: "
+            println "Finished "
         }
 
     }
