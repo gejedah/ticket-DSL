@@ -108,11 +108,11 @@
           </tr>
           <tr>
             <td class='payment-table-left-column'>Taxes</td>
-            <td class='payment-table-right-column required' id='paymentTaxes'>$paymentNett</td>
+            <td class='payment-table-right-column required' id='paymentTaxes'>$paymentTaxes</td>
           </tr>
           <tr>
             <td class='payment-table-left-column'>Total</td>
-            <td class='payment-table-right-column' id='total'>$math.add($s1, $s2)</td>
+            <td class='payment-table-right-column' id='total'>$math.add($paymentNett,$paymentTaxes)</td>
           </tr>
         </table>
       </div>

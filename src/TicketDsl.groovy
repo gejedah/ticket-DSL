@@ -131,7 +131,7 @@ class TicketDsl {
             println("Nilai atribut notice belum didefinisikan!!")
         }
         else{
-            File file = new File("src/out.html")
+            File file = new File("src/ticket_template.vm")
             xml.html() {
                 head {
                     title("Ticket")
@@ -293,12 +293,12 @@ class TicketDsl {
                             h3(class: "payment-details-label", "Payment Details")
                             table(width: "100%") {
                                 String s1 = "\$".concat(obligeAttrs.get(idx))
-                                String s2 = "\$".concat(obligeAttrs.get(idx))
                                 tr() {
                                     td(class: "payment-table-left-column", "Nett Fare")
                                     td(class: "payment-table-right-column required", id: "${obligeAttrs.get(idx)}", s1)
                                     idx++
                                 }
+                                String s2 = "\$".concat(obligeAttrs.get(idx))
                                 tr() {
                                     td(class: "payment-table-left-column", "Taxes")
                                     td(class: "payment-table-right-column required", id: "${obligeAttrs.get(idx)}", s2)
@@ -306,7 +306,7 @@ class TicketDsl {
                                 }
                                 tr() {
                                     td(class: "payment-table-left-column", "Total")
-                                    td(class: "payment-table-right-column", id: "total", '''$math.add(${s1}, ${s2})''')
+                                    td(class: "payment-table-right-column", id: "total", '''$math.add('''.concat(s1).concat(",").concat(s2).concat(")"))
                                 }
                             }
 
@@ -325,7 +325,7 @@ class TicketDsl {
                         }
                         div(class: "notice") {
                             h3(class: "notice-label", "Notice")
-                            p(class: "required", id: "${obligeAttrs.get(idx)}", note)
+                            p(id: "${obligeAttrs.get(idx)}", note)
 
                             // Jika ada tambahan input attribut opsional pada section ini
                             att_per_section = obligeSections.get("notice")
