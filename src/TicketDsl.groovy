@@ -65,14 +65,22 @@ class TicketDsl {
         boolean member_of_obligeAttrs = false
         boolean member_of_obligeSects = false
         boolean member_of_optSects = false
+        int index_for_changed
 
         for (String att: obligeAttrs){
             if (att.equalsIgnoreCase(methodName)){
                 member_of_obligeAttrs = true
+                index_for_changed = obligeAttrs.indexOf(att)
             }
         }
 
-        if (!member_of_obligeAttrs){
+        if (member_of_obligeAttrs){
+            if (args.length >= 1){
+                obligeAttrs.insertElementAt(args[0], index_for_changed)
+                obligeAttrs.remove(index_for_changed + 1)
+            }
+        }
+        else{
             def Attr = new Attr(name: methodName, vals: args)
             if (args.length >= 1){
 
@@ -131,7 +139,7 @@ class TicketDsl {
             println("Nilai atribut notice belum didefinisikan!!")
         }
         else{
-            File file = new File("src/ticket_template.vm")
+            File file = new File("src/ticket_template.html")
             xml.html() {
                 head {
                     title("Ticket")
