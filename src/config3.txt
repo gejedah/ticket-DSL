@@ -1,0 +1,19 @@
+eTicketNum<TicketNumber>
+itineraryDate
+itineraryFlight
+itineraryDepartAirport
+itineraryArriveAirport
+itineraryDepartTime
+itineraryArrivetime
+itineraryClass
+itineraryBaggage
+itineraryDate<Date>
+itineraryFlight<trainCarriage>
+itineraryDepartAirport<departStation>
+itineraryArriveAirport<arriveStation>
+itineraryDepartTime<departTime>
+itineraryArrivetime<arriveTime>
+itineraryClass<trainClass>
+itineraryBaggage<trainBaggage>
+notice<Terjadi pengunduran jadwal 1 jam>
+html

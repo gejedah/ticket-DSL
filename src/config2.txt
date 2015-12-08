@@ -1,28 +1,29 @@
-companyName<NamaPerusahaan>
-motto<Motto>
-agentName
-issuedDate
-bookRef
-passengerName
-eTicketNum
-itineraryDate
-itineraryFlight
-itineraryDepartAirport
-itineraryArriveAirport
-itineraryDepartTime
-itineraryArrivetime
-itineraryClass
-itineraryBaggage
-paymentNett
-paymentTaxes
-notice<ggtq zzz>
+Company Name<Nama Perusahaan>
+Motto<Semboyan>
+Agent Name<Nama Agen>
+Issued Date<Tanggal diisukan>
+Booking Reference<Referensi Booking>
+Passenger Name<Nama Penumpang>
+eTicket Number<Nomor Tiket>
+Date<Tanggal>
+Flight<Kode Penerbangan>
+Depart Airport<Tmpt Keberangkatan>
+Arrive Airport<Tmpt Kedatangan>
+Depart Time<Waktu Keberangkatan>
+Arrive Time<Waktu Kedatangan>
+Itinerary Class<Kelas>
+Baggage<Bagasi>
+Nett Fare<Harga Netto>
+Taxes<Pajak>
+Notice<Harap datang satu jam lebih awal>
 nabe<urumi>
-kanzaki<urumi>
-smart<urumi>
+kanzaki cute<Urumi>
+smart<Urumi>
 onizuka<albedo><lazy>
 oni<albedo><knn>
-ggtq<booking>
+ggtq<urumi>
 luck<booking>
 geje
 gaje
 gajah
+html

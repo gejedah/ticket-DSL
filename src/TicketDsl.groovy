@@ -14,7 +14,7 @@ class TicketDsl {
         List<String> oblig_atts = file_attr.readLines()
         for (String att : oblig_atts){
 //            println att
-            if (att.equalsIgnoreCase("notice")){
+            if (att.equalsIgnoreCase("Notice")){
                 invocation_effect.put(att, false)
             }
             else{
@@ -51,8 +51,8 @@ class TicketDsl {
 
     }
 
-    def notice(String note){
-        invocation_effect.replace("notice", true)
+    def Notice(String note){
+        invocation_effect.replace("Notice", true)
         this.note = note
     }
 
@@ -87,6 +87,7 @@ class TicketDsl {
                 for (String section: obligeSections.keySet()){
                     if (section.equalsIgnoreCase(args[0])){
                         member_of_obligeSects = true
+                        args[0] = section
                     }
                 }
 
@@ -99,6 +100,7 @@ class TicketDsl {
                     for (String section: optSections.keySet()){
                         if (section.equalsIgnoreCase(args[0])){
                             member_of_optSects = true
+                            args[0] = section
                         }
                     }
 
@@ -139,7 +141,7 @@ class TicketDsl {
             println("Nilai atribut notice belum didefinisikan!!")
         }
         else{
-            File file = new File("src/ticket_template.html")
+            File file = new File("src/ticket_template.vm")
             xml.html() {
                 head {
                     title("Ticket")
@@ -178,10 +180,10 @@ class TicketDsl {
                     div(class: "container") {
                         div(class: "logo") {
                             img(src: "logo.png", alt: "Logo", align: "middle")
-                            h1(class: "brand required", id: "${obligeAttrs.get(idx)}", "\$".concat(obligeAttrs.get(idx)))
+                            h1(class: "brand required", id: "${obligeAttrs.get(idx).replace(" ","_")}", "\$".concat(obligeAttrs.get(idx).replace(" ","_")))
                             idx++
-                            p(class: "tagline required", id: "${obligeAttrs.get(idx)}") {
-                                strong("\$".concat(obligeAttrs.get(idx)))
+                            p(class: "tagline required", id: "${obligeAttrs.get(idx).replace(" ","_")}") {
+                                strong("\$".concat(obligeAttrs.get(idx).replace(" ","_")))
                                 idx++
                             }
                         }
@@ -190,30 +192,30 @@ class TicketDsl {
                             h3(class: "booking-details-label", "Booking Details")
                             table(width: "100%") {
                                 tr() {
-                                    td("Agent Name")
-                                    td(class: "required", id: "${obligeAttrs.get(idx)}", "\$".concat(obligeAttrs.get(idx)))
+                                    td(obligeAttrs.get(idx))
+                                    td(class: "required", id: "${obligeAttrs.get(idx).replace(" ","_")}", "\$".concat(obligeAttrs.get(idx).replace(" ","_")))
                                     idx++
-                                    td("Issued Date")
-                                    td(class: "required", id: "${obligeAttrs.get(idx)}", "\$".concat(obligeAttrs.get(idx)))
+                                    td(obligeAttrs.get(idx))
+                                    td(class: "required", id: "${obligeAttrs.get(idx).replace(" ","_")}", "\$".concat(obligeAttrs.get(idx).replace(" ","_")))
                                     idx++
                                 }
                                 tr() {
-                                    td("Booking Reference")
+                                    td(obligeAttrs.get(idx))
                                     td {
-                                        strong(class: "required", id: "${obligeAttrs.get(idx)}", "\$".concat(obligeAttrs.get(idx)))
+                                        strong(class: "required", id: "${obligeAttrs.get(idx).replace(" ","_")}", "\$".concat(obligeAttrs.get(idx).replace(" ","_")))
                                         idx++
                                     }
                                 }
                             }
 
                             // Jika ada tambahan input attribut opsional pada section ini
-                            att_per_section = obligeSections.get("booking")
+                            att_per_section = obligeSections.get("Booking")
                             if (att_per_section.size() > 0){
                                 table(width: "100%") {
                                     for (Attr att : att_per_section) {
                                         tr() {
                                             td(class: "payment-table-left-column", att.name)
-                                            td(class: "payment-table-right-column required", id: att.name, "\$".concat(att.name))
+                                            td(class: "payment-table-right-column required", id: att.name.replace(" ","_"), "\$".concat(att.name).replace(" ","_"))
                                         }
                                     }
                                 }
@@ -223,27 +225,27 @@ class TicketDsl {
                             h3(class: "passenger-details-label", "Passenger Details")
                             table(width: "100%") {
                                 tr(id: "passenger-details-table-header") {
-                                    th("Name")
-                                    th("eTicket Number")
+                                    th(obligeAttrs.get(idx))
+                                    th(obligeAttrs.get(idx+1))
                                 }
                                 writer.append('''\n\t\t#foreach($passenger in $passengers)''')
                                 tr() {
-                                    td(class: "looping-required", id: "${obligeAttrs.get(idx)}", "\$passenger.".concat(obligeAttrs.get(idx)))
+                                    td(class: "looping-required", id: "${obligeAttrs.get(idx).replace(" ","_")}", "\$passenger.".concat(obligeAttrs.get(idx).replace(" ","_")))
                                     idx++
-                                    td(class: "looping-required", id: "${obligeAttrs.get(idx)}", "\$passenger.".concat(obligeAttrs.get(idx)))
+                                    td(class: "looping-required", id: "${obligeAttrs.get(idx).replace(" ","_")}", "\$passenger.".concat(obligeAttrs.get(idx).replace(" ","_")))
                                     idx++
                                 }
                                 writer.append('''\n\t\t#end''')
                             }
 
                             // Jika ada tambahan input attribut opsional pada section ini
-                            att_per_section = obligeSections.get("passenger")
+                            att_per_section = obligeSections.get("Passenger")
                             if (att_per_section.size() > 0){
                                 table(width: "100%") {
                                     for (Attr att : att_per_section) {
                                         tr() {
                                             td(class: "payment-table-left-column", att.name)
-                                            td(class: "payment-table-right-column required", id: att.name, "\$".concat(att.name))
+                                            td(class: "payment-table-right-column required", id: att.name.replace(" ","_"), "\$".concat(att.name).replace(" ","_"))
                                         }
                                     }
                                 }
@@ -253,45 +255,53 @@ class TicketDsl {
                             h3(class: "itinerary-details-label", "Itenarary Details")
                             table(width: "100%") {
                                 tr(id: "itinerary-details-table-header") {
-                                    th("Date")
-                                    th("Flight")
-                                    th("Depart Airport")
-                                    th("Arrive Airport")
-                                    th("Depart Time")
-                                    th("Arrive Time")
-                                    th("Class")
-                                    th("Bagg.")
+                                    int iter_temp = 0
+                                    th(obligeAttrs.get(idx + iter_temp))
+                                    iter_temp++
+                                    th(obligeAttrs.get(idx + iter_temp))
+                                    iter_temp++
+                                    th(obligeAttrs.get(idx + iter_temp))
+                                    iter_temp++
+                                    th(obligeAttrs.get(idx + iter_temp))
+                                    iter_temp++
+                                    th(obligeAttrs.get(idx + iter_temp))
+                                    iter_temp++
+                                    th(obligeAttrs.get(idx + iter_temp))
+                                    iter_temp++
+                                    th(obligeAttrs.get(idx + iter_temp))
+                                    iter_temp++
+                                    th(obligeAttrs.get(idx + iter_temp))
                                 }
                                 writer.append('''\n\t\t#foreach($itinerary in $itineraries)''')
                                 tr() {
-                                    td(class: "looping-required", id: "${obligeAttrs.get(idx)}", "\$itinerary.".concat(obligeAttrs.get(idx)))
+                                    td(class: "looping-required", id: "${obligeAttrs.get(idx).replace(" ","_")}", "\$itinerary.".concat(obligeAttrs.get(idx).replace(" ","_")))
                                     idx++
-                                    td(class: "looping-required", id: "${obligeAttrs.get(idx)}", "\$itinerary.".concat(obligeAttrs.get(idx)))
+                                    td(class: "looping-required", id: "${obligeAttrs.get(idx).replace(" ","_")}", "\$itinerary.".concat(obligeAttrs.get(idx).replace(" ","_")))
                                     idx++
-                                    td(class: "looping-required", id: "${obligeAttrs.get(idx)}", "\$itinerary.".concat(obligeAttrs.get(idx)))
+                                    td(class: "looping-required", id: "${obligeAttrs.get(idx).replace(" ","_")}", "\$itinerary.".concat(obligeAttrs.get(idx).replace(" ","_")))
                                     idx++
-                                    td(class: "looping-required", id: "${obligeAttrs.get(idx)}", "\$itinerary.".concat(obligeAttrs.get(idx)))
+                                    td(class: "looping-required", id: "${obligeAttrs.get(idx).replace(" ","_")}", "\$itinerary.".concat(obligeAttrs.get(idx).replace(" ","_")))
                                     idx++
-                                    td(class: "looping-required", id: "${obligeAttrs.get(idx)}", "\$itinerary.".concat(obligeAttrs.get(idx)))
+                                    td(class: "looping-required", id: "${obligeAttrs.get(idx).replace(" ","_")}", "\$itinerary.".concat(obligeAttrs.get(idx).replace(" ","_")))
                                     idx++
-                                    td(class: "looping-required", id: "${obligeAttrs.get(idx)}", "\$itinerary.".concat(obligeAttrs.get(idx)))
+                                    td(class: "looping-required", id: "${obligeAttrs.get(idx).replace(" ","_")}", "\$itinerary.".concat(obligeAttrs.get(idx).replace(" ","_")))
                                     idx++
-                                    td(class: "looping-required", id: "${obligeAttrs.get(idx)}", "\$itinerary.".concat(obligeAttrs.get(idx)))
+                                    td(class: "looping-required", id: "${obligeAttrs.get(idx).replace(" ","_")}", "\$itinerary.".concat(obligeAttrs.get(idx).replace(" ","_")))
                                     idx++
-                                    td(class: "looping-required", id: "${obligeAttrs.get(idx)}", "\$itinerary.".concat(obligeAttrs.get(idx)))
+                                    td(class: "looping-required", id: "${obligeAttrs.get(idx).replace(" ","_")}", "\$itinerary.".concat(obligeAttrs.get(idx).replace(" ","_")))
                                     idx++
                                 }
                                 writer.append('''\n\t\t#end''')
                             }
 
                             // Jika ada tambahan input attribut opsional pada section ini
-                            att_per_section = obligeSections.get("itinerary")
+                            att_per_section = obligeSections.get("Itinerary")
                             if (att_per_section.size() > 0){
                                 table(width: "100%") {
                                     for (Attr att : att_per_section) {
                                         tr() {
                                             td(class: "payment-table-left-column", att.name)
-                                            td(class: "payment-table-right-column required", id: att.name, "\$".concat(att.name))
+                                            td(class: "payment-table-right-column required", id: att.name.replace(" ","_"), "\$".concat(att.name).replace(" ","_"))
                                         }
                                     }
                                 }
@@ -300,16 +310,16 @@ class TicketDsl {
                         div(class: "payment-details") {
                             h3(class: "payment-details-label", "Payment Details")
                             table(width: "100%") {
-                                String s1 = "\$".concat(obligeAttrs.get(idx))
+                                String s1 = "\$".concat(obligeAttrs.get(idx).replace(" ","_"))
                                 tr() {
-                                    td(class: "payment-table-left-column", "Nett Fare")
-                                    td(class: "payment-table-right-column required", id: "${obligeAttrs.get(idx)}", s1)
+                                    td(class: "payment-table-left-column", obligeAttrs.get(idx))
+                                    td(class: "payment-table-right-column required", id: "${obligeAttrs.get(idx).replace(" ","_")}", s1)
                                     idx++
                                 }
-                                String s2 = "\$".concat(obligeAttrs.get(idx))
+                                String s2 = "\$".concat(obligeAttrs.get(idx).replace(" ","_"))
                                 tr() {
-                                    td(class: "payment-table-left-column", "Taxes")
-                                    td(class: "payment-table-right-column required", id: "${obligeAttrs.get(idx)}", s2)
+                                    td(class: "payment-table-left-column", obligeAttrs.get(idx))
+                                    td(class: "payment-table-right-column required", id: "${obligeAttrs.get(idx).replace(" ","_")}", s2)
                                     idx++
                                 }
                                 tr() {
@@ -319,13 +329,13 @@ class TicketDsl {
                             }
 
                             // Jika ada tambahan input attribut opsional pada section ini
-                            att_per_section = obligeSections.get("payment")
+                            att_per_section = obligeSections.get("Payment")
                             if (att_per_section.size() > 0){
                                 table(width: "100%") {
                                     for (Attr att : att_per_section) {
                                         tr() {
                                             td(class: "payment-table-left-column", att.name)
-                                            td(class: "payment-table-right-column required", id: att.name, "\$".concat(att.name))
+                                            td(class: "payment-table-right-column required", id: att.name.replace(" ","_"), "\$".concat(att.name).replace(" ","_"))
                                         }
                                     }
                                 }
@@ -336,13 +346,13 @@ class TicketDsl {
                             p(id: "${obligeAttrs.get(idx)}", note)
 
                             // Jika ada tambahan input attribut opsional pada section ini
-                            att_per_section = obligeSections.get("notice")
+                            att_per_section = obligeSections.get("Notice")
                             if (att_per_section.size() > 0){
                                 table(width: "100%") {
                                     for (Attr att : att_per_section) {
                                         tr() {
                                             td(class: "payment-table-left-column", att.name)
-                                            td(class: "payment-table-right-column required", id: att.name, "\$".concat(att.name))
+                                            td(class: "payment-table-right-column required", id: att.name.replace(" ","_"), "\$".concat(att.name).replace(" ","_"))
                                         }
                                     }
                                 }
@@ -358,7 +368,7 @@ class TicketDsl {
                                         for (Attr att : att_per_section) {
                                             tr() {
                                                 td(class: "payment-table-left-column", att.name)
-                                                td(class: "payment-table-right-column required", id: att.name, "\$".concat(att.name))
+                                                td(class: "payment-table-right-column required", id: att.name.replace(" ","_"), "\$".concat(att.name).replace(" ","_"))
                                             }
                                         }
                                     }

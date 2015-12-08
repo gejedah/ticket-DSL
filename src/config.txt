@@ -1,18 +1,18 @@
-companyName
-motto
-agentName
-issuedDate
-bookRef
-passengerName
-eTicketNum
-itineraryDate
-itineraryFlight
-itineraryDepartAirport
-itineraryArriveAirport
-itineraryDepartTime
-itineraryArrivetime
-itineraryClass
-itineraryBaggage
-paymentNett
-paymentTaxes
-notice
+Company Name
+Motto
+Agent Name
+Issued Date
+Booking Reference
+Passenger Name
+eTicket Number
+Date
+Flight
+Depart Airport
+Arrive Airport
+Depart Time
+Arrive Time
+Itinerary Class
+Baggage
+Nett Fare
+Taxes
+Notice

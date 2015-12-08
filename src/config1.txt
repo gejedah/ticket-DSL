@@ -1,5 +1,5 @@
-booking
-passenger
-itinerary
-payment
-notice
+Booking
+Passenger
+Itinerary
+Payment
+Notice
