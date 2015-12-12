@@ -1,0 +1,18 @@
+Company Name
+Motto
+Agent Name
+Issued Date
+Booking Reference
+Passenger Name
+eTicket Number
+Date
+Flight
+Depart Airport
+Arrive Airport
+Depart Time
+Arrive Time
+Itinerary Class
+Baggage
+Nett Fare
+Taxes
+Notice

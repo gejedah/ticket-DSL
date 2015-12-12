@@ -1,0 +1,35 @@
+Company Name<Nama Perusahaan>
+Motto<Semboyan>
+Agent Name<Nama Agen>
+Issued Date<Tanggal diisukan>
+Booking Reference<Referensi Booking>
+Passenger Name<Nama Penumpang>
+eTicket Number<Nomor Tiket>
+Date<Tanggal>
+Flight<Kode Penerbangan>
+Depart Airport<Tmpt Keberangkatan>
+Arrive Airport<Tmpt Kedatangan>
+Depart Time<Waktu Keberangkatan>
+Arrive Time<Waktu Kedatangan>
+Itinerary Class<Kelas>
+Baggage<Bagasi>
+Nett Fare<Harga Netto>
+Taxes<Pajak>
+Notice<Harap datang satu jam lebih awal>
+nabe<urumi>
+kanzaki cute<Urumi>
+smart<Urumi>
+onizuka<albedo><lazy>
+oni<albedo><knn>
+ggtq<booking>
+ggtq<urumi>
+smart<urumi>
+luck<booking>
+luck1<passenger>
+luck2<itinerary>
+luck3<payment>
+luck4<notice>
+geje
+gaje
+gajah
+html
