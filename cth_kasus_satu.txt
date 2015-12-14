@@ -1,5 +1,3 @@
 Notice<Harap datang satu jam lebih awal>
-Agent Name<Nama Agen>
-Company Name<Nama Perusahaan>
 Perhatian<Notice>
 html
