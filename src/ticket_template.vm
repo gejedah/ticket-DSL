@@ -56,24 +56,18 @@
             </td>
           </tr>
         </table>
-        <table width='100%'>
-          <tr>
-            <td class='payment-table-left-column'>luck</td>
-            <td class='payment-table-right-column required' id='luck'>$luck</td>
-          </tr>
-        </table>
       </div>
       <div class='passenger-details'>
         <h3 class='passenger-details-label'>Passenger Details</h3>
         <table width='100%'>
           <tr id='passenger-details-table-header'>
             <th>Nama Penumpang</th>
-            <th>No. Tiket</th>
+            <th>Nomor Tiket</th>
           </tr>
 		#foreach($passenger in $passengers)
           <tr>
             <td class='looping-required' id='Nama_Penumpang'>$passenger.Nama_Penumpang</td>
-            <td class='looping-required' id='No._Tiket'>$passenger.No._Tiket</td>
+            <td class='looping-required' id='Nomor_Tiket'>$passenger.Nomor_Tiket</td>
           </tr>
 		#end
         </table>
@@ -83,9 +77,9 @@
         <table width='100%'>
           <tr id='itinerary-details-table-header'>
             <th>Tanggal</th>
-            <th>Kode Penerbangan</th>
-            <th>Tmpt Keberangkatan</th>
-            <th>Tmpt Kedatangan</th>
+            <th>Nomor KA</th>
+            <th>Stasiun Keberangkatan</th>
+            <th>Stasiun Kedatangan</th>
             <th>Waktu Keberangkatan</th>
             <th>Waktu Kedatangan</th>
             <th>Kelas</th>
@@ -94,15 +88,29 @@
 		#foreach($itinerary in $itineraries)
           <tr>
             <td class='looping-required' id='Tanggal'>$itinerary.Tanggal</td>
-            <td class='looping-required' id='Kode_Penerbangan'>$itinerary.Kode_Penerbangan</td>
-            <td class='looping-required' id='Tmpt_Keberangkatan'>$itinerary.Tmpt_Keberangkatan</td>
-            <td class='looping-required' id='Tmpt_Kedatangan'>$itinerary.Tmpt_Kedatangan</td>
+            <td class='looping-required' id='Nomor_KA'>$itinerary.Nomor_KA</td>
+            <td class='looping-required' id='Stasiun_Keberangkatan'>$itinerary.Stasiun_Keberangkatan</td>
+            <td class='looping-required' id='Stasiun_Kedatangan'>$itinerary.Stasiun_Kedatangan</td>
             <td class='looping-required' id='Waktu_Keberangkatan'>$itinerary.Waktu_Keberangkatan</td>
             <td class='looping-required' id='Waktu_Kedatangan'>$itinerary.Waktu_Kedatangan</td>
             <td class='looping-required' id='Kelas'>$itinerary.Kelas</td>
             <td class='looping-required' id='Bagasi'>$itinerary.Bagasi</td>
           </tr>
 		#end
+        </table>
+        <table width='100%'>
+          <tr>
+            <td class='payment-table-left-column'>Nama KA</td>
+            <td class='payment-table-right-column required' id='Nama_KA'>$Nama_KA</td>
+          </tr>
+          <tr>
+            <td class='payment-table-left-column'>Nomor Gerbong</td>
+            <td class='payment-table-right-column required' id='Nomor_Gerbong'>$Nomor_Gerbong</td>
+          </tr>
+          <tr>
+            <td class='payment-table-left-column'>Nomor kursi</td>
+            <td class='payment-table-right-column required' id='Nomor_kursi'>$Nomor_kursi</td>
+          </tr>
         </table>
       </div>
       <div class='payment-details'>
@@ -125,57 +133,6 @@
       <div class='notice'>
         <h3 class='notice-label'>Notice</h3>
         <p id='Notice'>Harap datang satu jam lebih awal</p>
-      </div>
-      <div class='urumi'>
-        <h3 class='section-required'>urumi</h3>
-        <table width='100%'>
-          <tr>
-            <td class='payment-table-left-column'>nabe</td>
-            <td class='payment-table-right-column required' id='nabe'>$nabe</td>
-          </tr>
-          <tr>
-            <td class='payment-table-left-column'>kanzaki cute</td>
-            <td class='payment-table-right-column required' id='kanzaki_cute'>$kanzaki_cute</td>
-          </tr>
-          <tr>
-            <td class='payment-table-left-column'>smart</td>
-            <td class='payment-table-right-column required' id='smart'>$smart</td>
-          </tr>
-          <tr>
-            <td class='payment-table-left-column'>ggtq</td>
-            <td class='payment-table-right-column required' id='ggtq'>$ggtq</td>
-          </tr>
-        </table>
-      </div>
-      <div class='etc'>
-        <h3 class='section-required'>etc</h3>
-        <table width='100%'>
-          <tr>
-            <td class='payment-table-left-column'>geje</td>
-            <td class='payment-table-right-column required' id='geje'>$geje</td>
-          </tr>
-          <tr>
-            <td class='payment-table-left-column'>gaje</td>
-            <td class='payment-table-right-column required' id='gaje'>$gaje</td>
-          </tr>
-          <tr>
-            <td class='payment-table-left-column'>gajah</td>
-            <td class='payment-table-right-column required' id='gajah'>$gajah</td>
-          </tr>
-        </table>
-      </div>
-      <div class='albedo'>
-        <h3 class='section-required'>albedo</h3>
-        <table width='100%'>
-          <tr>
-            <td class='payment-table-left-column'>onizuka</td>
-            <td class='payment-table-right-column required' id='onizuka'>$onizuka</td>
-          </tr>
-          <tr>
-            <td class='payment-table-left-column'>oni</td>
-            <td class='payment-table-right-column required' id='oni'>$oni</td>
-          </tr>
-        </table>
       </div>
     </div>
   </body>

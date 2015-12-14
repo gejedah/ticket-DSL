@@ -11,7 +11,7 @@ class TicketDsl {
     private static String note;
 
     public TicketDsl(){
-        File file_attr = new File("src/main/groovy/config.txt")
+        File file_attr = new File("resource/config.txt")
         List<String> oblig_atts = file_attr.readLines()
         for (String att : oblig_atts){
 //            println att
@@ -24,7 +24,7 @@ class TicketDsl {
             obligeAttrs.add(att)
         }
 
-        File file_section = new File("src/main/groovy/config1.txt")
+        File file_section = new File("resource/config1.txt")
         List<String> tempList = file_section.readLines()
         for (String section: tempList){
             obligeSections.put(section, new ArrayList<Attr>())
@@ -153,7 +153,7 @@ class TicketDsl {
             println("Nilai atribut notice belum didefinisikan!!")
         }
         else{
-            File file = new File("src/ticket_template.vm")
+            File file = new File("src/ticket_template.html")
             xml.html() {
                 head {
                     title("Ticket")
@@ -282,7 +282,9 @@ class TicketDsl {
                                     iter_temp++
                                     th(obligeAttrs.get(idx + iter_temp))
                                     iter_temp++
-                                    th(obligeAttrs.get(idx + iter_temp))
+                                    if (!obligeAttrs.get(idx+iter_temp).equalsIgnoreCase("\"\"")){
+                                        th(obligeAttrs.get(idx + iter_temp))
+                                    }
                                 }
                                 writer.append('''\n\t\t#foreach($itinerary in $itineraries)''')
                                 tr() {
@@ -300,7 +302,9 @@ class TicketDsl {
                                     idx++
                                     td(class: "looping-required", id: "${obligeAttrs.get(idx).replace(" ","_")}", "\$itinerary.".concat(obligeAttrs.get(idx).replace(" ","_")))
                                     idx++
-                                    td(class: "looping-required", id: "${obligeAttrs.get(idx).replace(" ","_")}", "\$itinerary.".concat(obligeAttrs.get(idx).replace(" ","_")))
+                                    if (!obligeAttrs.get(idx).equalsIgnoreCase("\"\"")){
+                                        td(class: "looping-required", id: "${obligeAttrs.get(idx).replace(" ","_")}", "\$itinerary.".concat(obligeAttrs.get(idx).replace(" ","_")))
+                                    }
                                     idx++
                                 }
                                 writer.append('''\n\t\t#end''')
